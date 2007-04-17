@@ -43,13 +43,11 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.10.0
-Release: %mkrel 4
+Version: 1.10.1
+Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 1.10.0-2mdv disable forgotten debug output (SVN)
-Patch0:		evolution-data-server-1.10.0-removedebug.patch
 # (pt) 1.10.0-3mdv fix empty error dialog in non utf8 locale
 Patch1:		evolution-data-server-1.10.0-gpg_utf8.patch
 # (fc) 1.10.0-4mdv fix libexec path, for crash handling
@@ -201,7 +199,6 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
-%patch0 -p1 -b .disabledebug
 %patch1 -p0 -b .gpgutf8
 %patch2 -p1 -b .libexec
 %patch3 -p1 -b .isa
@@ -305,5 +302,3 @@ and calendar in the gnome desktop.
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %attr(644,root,root) %{_libdir}/*.la
-
-
