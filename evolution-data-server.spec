@@ -44,7 +44,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: 1.10.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -54,6 +54,8 @@ Patch1:		evolution-data-server-1.10.0-gpg_utf8.patch
 Patch2:		evolution-data-server-1.10.0-libexec.patch
 # (fc) add support for Exchange 2003 behind ISA Server 2004 (GNOME bug #415922)
 Patch3:		evolution-data-server-1.9.92-isa-support.patch
+# (fc) 1.10.1-2mdv fix APOP vulnerability (SVN) (CVE-2007-1558)
+Patch4:		evolution-data-server-1.10.1-fixapopvulnerability.patch
 
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -202,6 +204,7 @@ and calendar in the gnome desktop.
 %patch1 -p0 -b .gpgutf8
 %patch2 -p1 -b .libexec
 %patch3 -p1 -b .isa
+%patch4 -p1 -b .fixapopvulnerability
 
 %build
 
