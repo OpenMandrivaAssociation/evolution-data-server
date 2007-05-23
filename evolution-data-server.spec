@@ -44,7 +44,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: 1.10.1
-Release: %mkrel 2
+Release: %mkrel 3
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -56,6 +56,8 @@ Patch2:		evolution-data-server-1.10.0-libexec.patch
 Patch3:		evolution-data-server-1.9.92-isa-support.patch
 # (fc) 1.10.1-2mdv fix APOP vulnerability (SVN) (CVE-2007-1558)
 Patch4:		evolution-data-server-1.10.1-fixapopvulnerability.patch
+# (pt) fix a crash when using timezones which do not include a TZNAMZ (GNOME bug #425129)
+Patch5:		evolution-data-server-1.10.1-tzname.patch
 
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -205,6 +207,7 @@ and calendar in the gnome desktop.
 %patch2 -p1 -b .libexec
 %patch3 -p1 -b .isa
 %patch4 -p1 -b .fixapopvulnerability
+%patch5 -p0 -b .tzname
 
 %build
 
