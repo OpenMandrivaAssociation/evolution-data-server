@@ -43,21 +43,15 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.10.1
-Release: %mkrel 3
+Version: 1.10.2
+Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (pt) 1.10.0-3mdv fix empty error dialog in non utf8 locale
 Patch1:		evolution-data-server-1.10.0-gpg_utf8.patch
-# (fc) 1.10.0-4mdv fix libexec path, for crash handling
-Patch2:		evolution-data-server-1.10.0-libexec.patch
 # (fc) add support for Exchange 2003 behind ISA Server 2004 (GNOME bug #415922)
 Patch3:		evolution-data-server-1.9.92-isa-support.patch
-# (fc) 1.10.1-2mdv fix APOP vulnerability (SVN) (CVE-2007-1558)
-Patch4:		evolution-data-server-1.10.1-fixapopvulnerability.patch
-# (pt) fix a crash when using timezones which do not include a TZNAMZ (GNOME bug #425129)
-Patch5:		evolution-data-server-1.10.1-tzname.patch
 
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -204,10 +198,7 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 %patch1 -p0 -b .gpgutf8
-%patch2 -p1 -b .libexec
 %patch3 -p1 -b .isa
-%patch4 -p1 -b .fixapopvulnerability
-%patch5 -p0 -b .tzname
 
 %build
 
