@@ -1,6 +1,6 @@
 %define libsoup_version_required 2.2.3
 %define api_version 1.2
-%define base_version 1.10
+%define base_version 1.12
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -43,15 +43,13 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.10.2
+Version: 1.11.3
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (pt) 1.10.0-3mdv fix empty error dialog in non utf8 locale
-Patch1:		evolution-data-server-1.10.0-gpg_utf8.patch
-# (fc) add support for Exchange 2003 behind ISA Server 2004 (GNOME bug #415922)
-Patch3:		evolution-data-server-1.9.92-isa-support.patch
+Patch1:		evolution-data-server-1.11.1-gpgutf8.patch
 
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -197,8 +195,7 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
-%patch1 -p0 -b .gpgutf8
-%patch3 -p1 -b .isa
+%patch1 -p1 -b .gpgutf8
 
 %build
 
