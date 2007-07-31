@@ -43,7 +43,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.11.5
+Version: 1.11.6
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
