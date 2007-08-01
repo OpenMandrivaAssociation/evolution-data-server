@@ -31,6 +31,7 @@
 
 %define edataservermajor 9
 %define edataserver_libname %mklibname edataserver %edataservermajor
+%define edataserver_libnamedev %mklibname -d edataserver
 
 %define edataserveruimajor 8
 %define edataserverui_libname %mklibname edataserverui %edataserveruimajor
@@ -43,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.11.6
+Version: 1.11.6.1
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
@@ -168,7 +169,7 @@ Requires:	%{name} >= %{version}-%{release}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edataserver_libname}-devel
+%package -n %{edataserver_libnamedev}
 Summary:	Libraries and include files for using Evolution Data Server
 Group:		Development/GNOME and GTK+
 Requires:	%{name} = %{version}
@@ -187,9 +188,10 @@ Provides:	%{name}-devel = %{version}-%{release}
 Provides: libedataserver-devel = %version-%release
 Requires: nss-devel >= %{firefox_version}
 Requires: nspr-devel >= %{firefox_version}
+Obsoletes: %mklibname -d edataserver 9
 %define _requires_exceptions nspr4\\|plc4\\|plds4\\|nss3\\|smime3\\|softokn3\\|ssl3
 
-%description -n %{edataserver_libname}-devel
+%description -n %{edataserver_libnamedev}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
@@ -289,7 +291,7 @@ and calendar in the gnome desktop.
 %defattr(-, root, root)
 %{_libdir}/libexchange-storage-*.so.%{exchangemajor}*
 
-%files -n %{edataserver_libname}-devel
+%files -n %{edataserver_libnamedev}
 %defattr(-, root, root)
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/%{name}-%{base_version}
