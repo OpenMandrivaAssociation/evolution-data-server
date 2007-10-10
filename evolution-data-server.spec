@@ -45,12 +45,14 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: 1.12.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (pt) 1.10.0-3mdv fix empty error dialog in non utf8 locale
 Patch1:		evolution-data-server-1.11.1-gpgutf8.patch
+# (fc) fix e-d-s leaks (GNOME bug #420167)
+Patch2:		evolution-data-server-1.12.0-fixleaks.patch
 
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
@@ -198,6 +200,7 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 %patch1 -p1 -b .gpgutf8
+%patch2 -p1 -b .fixleaks
 
 %build
 
