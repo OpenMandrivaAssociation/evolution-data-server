@@ -45,7 +45,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: 1.12.1
-Release: %mkrel 2
+Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
