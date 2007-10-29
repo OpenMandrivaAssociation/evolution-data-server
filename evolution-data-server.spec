@@ -1,6 +1,6 @@
 %define libsoup_version_required 2.2.3
 %define api_version 1.2
-%define base_version 1.12
+%define base_version 2.22
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -42,9 +42,12 @@
 %define exchangemajor 3
 %define exchange_libname %mklibname exchange-storage %exchangemajor
 
+%define gdatamajor 1
+%define gdata_libname %mklibname gdata %gdatamajor
+
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 1.12.1
+Version: 2.21.1
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
@@ -169,6 +172,16 @@ Requires:	%{name} >= %{version}-%{release}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
+%package -n %{gdata_libname}
+Summary:	Shared libraries for using Evolution Data Server
+Group:		System/Libraries
+Requires:	%{name} >= %{version}-%{release}
+
+%description -n %{gdata_libname}
+Evolution Data Server provides a central location for your addressbook
+and calendar in the gnome desktop.
+
+
 %package -n %{edataserver_libnamedev}
 Summary:	Libraries and include files for using Evolution Data Server
 Group:		Development/GNOME and GTK+
@@ -183,6 +196,7 @@ Requires: %edataserver_libname = %version
 Requires: %edataserverui_libname = %version
 Requires: %egroupwise_libname = %version
 Requires: %exchange_libname = %version
+Requires: %gdata_libname = %version
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides: libedataserver-devel = %version-%release
@@ -238,6 +252,9 @@ and calendar in the gnome desktop.
 %postun -n %egroupwise_libname -p /sbin/ldconfig
 %post -n %exchange_libname -p /sbin/ldconfig
 %postun -n %exchange_libname -p /sbin/ldconfig
+%post -n %gdata_libname -p /sbin/ldconfig
+%postun -n %gdata_libname -p /sbin/ldconfig
+
 
 %files -f %{name}-%{base_version}.lang
 %defattr(-, root, root)
@@ -257,39 +274,44 @@ and calendar in the gnome desktop.
 
 %files -n %{camelprovider_libname}
 %defattr(-, root, root)
-%{_libdir}/libcamel-provider*.so.%{camelprovidermajor}*
+%{_libdir}/libcamel-provider-%{api_version}.so.%{camelprovidermajor}*
 
 %files -n %{ebook_libname}
 %defattr(-, root, root)
-%{_libdir}/libebook*.so.%{ebookmajor}*
+%{_libdir}/libebook-%{api_version}.so.%{ebookmajor}*
 
 %files -n %{ecal_libname}
 %defattr(-, root, root)
-%{_libdir}/libecal*.so.%{ecalmajor}*
+%{_libdir}/libecal-%{api_version}.so.%{ecalmajor}*
 
 %files -n %{edatabook_libname}
 %defattr(-, root, root)
-%{_libdir}/libedata-book*.so.%{edatabookmajor}*
+%{_libdir}/libedata-book-%{api_version}.so.%{edatabookmajor}*
 
 %files -n %{edatacal_libname}
 %defattr(-, root, root)
-%{_libdir}/libedata-cal*.so.%{edatacalmajor}*
+%{_libdir}/libedata-cal-%{api_version}.so.%{edatacalmajor}*
 
 %files -n %{edataserver_libname}
 %defattr(-, root, root)
-%{_libdir}/libedataserver-*.so.%{edataservermajor}*
+%{_libdir}/libedataserver-%{api_version}.so.%{edataservermajor}*
 
 %files -n %{edataserverui_libname}
 %defattr(-, root, root)
-%{_libdir}/libedataserverui-*.so.%{edataserveruimajor}*
+%{_libdir}/libedataserverui-%{api_version}.so.%{edataserveruimajor}*
 
 %files -n %{egroupwise_libname}
 %defattr(-, root, root)
-%{_libdir}/libegroupwise-*.so.%{egroupwisemajor}*
+%{_libdir}/libegroupwise-%{api_version}.so.%{egroupwisemajor}*
 
 %files -n %{exchange_libname}
 %defattr(-, root, root)
-%{_libdir}/libexchange-storage-*.so.%{exchangemajor}*
+%{_libdir}/libexchange-storage-%{api_version}.so.%{exchangemajor}*
+
+%files -n %{gdata_libname}
+%defattr(-, root, root)
+%{_libdir}/libgdata-%{api_version}.so.%{gdatamajor}*
+%{_libdir}/libgdata-google-%{api_version}.so.%{gdatamajor}*
 
 %files -n %{edataserver_libnamedev}
 %defattr(-, root, root)
