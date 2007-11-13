@@ -47,7 +47,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 2.21.1
+Version: 2.21.2
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
