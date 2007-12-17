@@ -54,7 +54,6 @@ Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 
 URL: 		http://www.gnome.org/projects/evolution/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 BuildRequires: bison flex
 BuildRequires: gtk-doc
