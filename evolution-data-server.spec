@@ -47,13 +47,11 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 2.21.4
-Release: %mkrel 3
+Version: 2.21.5
+Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# http://bugzilla.gnome.org/show_bug.cgi?id=504783
-Patch: evolution-data-server-2.21.4-google-calender-non-gmail-addresses.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -210,7 +208,6 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
-%patch -p0
 
 %build
 
