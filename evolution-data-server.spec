@@ -1,3 +1,4 @@
+%define version 2.21.5.1
 %define libsoup_version_required 2.2.3
 %define api_version 1.2
 %define base_version 2.22
@@ -47,7 +48,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version: 2.21.5
+Version: %version
 Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
