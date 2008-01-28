@@ -1,5 +1,5 @@
-%define version 2.21.5.1
-%define libsoup_version_required 2.2.3
+%define version 2.21.90
+%define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.22
 %define lib_major 6
@@ -12,10 +12,10 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 10
+%define camelmajor 11
 %define camel_libname %mklibname camel %camelmajor
 
-%define camelprovidermajor 10
+%define camelprovidermajor 11
 %define camelprovider_libname %mklibname camel-provider %camelprovidermajor
 
 %define ebookmajor 9
