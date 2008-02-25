@@ -1,4 +1,4 @@
-%define version 2.21.91
+%define version 2.21.92
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.22
@@ -49,7 +49,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 2
+Release: %mkrel 1
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
