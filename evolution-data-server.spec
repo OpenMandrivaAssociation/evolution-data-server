@@ -1,4 +1,4 @@
-%define version 2.21.92
+%define version 2.22.0
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.22
