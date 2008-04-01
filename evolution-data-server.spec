@@ -49,10 +49,12 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+# (fc) 2.22.0-2mdv various svn fixes
+Patch0:		evolution-data-server-2.22.0-svnfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -209,6 +211,7 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
+%patch0 -p1 -b .svnfixes
 
 %build
 
