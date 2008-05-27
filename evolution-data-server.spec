@@ -66,7 +66,7 @@ BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
 BuildRequires: nspr-devel >= %{firefox_version}
 BuildRequires: openldap-devel 
-BuildRequires: perl-XML-Parser
+BuildRequires: intltool
 BuildRequires: db4-devel
 
 Obsoletes: %oldlibname
