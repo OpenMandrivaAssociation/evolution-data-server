@@ -1,4 +1,4 @@
-%define version 2.22.1.1
+%define version 2.22.2
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.22
@@ -53,6 +53,7 @@ Release: %mkrel 2
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch: evolution-data-server-2.22.2-fix-linking.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -209,6 +210,8 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
+%patch -p1
+automake
 
 %build
 
