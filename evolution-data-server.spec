@@ -46,6 +46,11 @@
 %define gdatamajor 1
 %define gdata_libname %mklibname gdata %gdatamajor
 
+# disable under and over linking check, Makefile.am patch isn't enough
+
+%define _disable_ld_as_needed 1
+%define _disable_ld_no_undefined 1
+
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
@@ -53,7 +58,10 @@ Release: %mkrel 2
 License: 	GPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch: evolution-data-server-2.22.2-fix-linking.patch
+# fix underlinking (not working for now)
+Patch0: evolution-data-server-2.22.2-fix-linking.patch
+# (fc) 2.22.2-1mdv various bugfixes (SVN)
+Patch1: evolution-data-server-2.22.2-svnfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -210,8 +218,11 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
-%patch -p1
-automake
+#%patch0 -p1 -b .fixlinking
+%patch1 -p1 -b .svnfixes
+
+#needed by patch0
+#automake
 
 %build
 
