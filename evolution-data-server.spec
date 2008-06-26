@@ -313,7 +313,7 @@ and calendar in the gnome desktop.
 
 %files -f %{name}-%{base_version}.lang
 %defattr(-, root, root)
-%doc COPYING ChangeLog 
+%doc COPYING NEWS
 %{_libexecdir}/%{name}-%{base_version}
 %{_libexecdir}/%{name}-%{api_version}
 %{_libexecdir}/camel-index-control-%{api_version}
