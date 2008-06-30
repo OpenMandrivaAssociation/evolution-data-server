@@ -1,4 +1,4 @@
-%define version 2.22.2
+%define version 2.22.3
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.22
@@ -54,14 +54,12 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 2
-License: 	GPL
+Release: %mkrel 1
+License: 	LGPLv2
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
-# (fc) 2.22.2-1mdv various bugfixes (SVN)
-Patch1: evolution-data-server-2.22.2-svnfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -219,7 +217,6 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 #%patch0 -p1 -b .fixlinking
-%patch1 -p1 -b .svnfixes
 
 #needed by patch0
 #automake
