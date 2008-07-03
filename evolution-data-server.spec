@@ -1,7 +1,7 @@
-%define version 2.22.3
+%define version 2.23.4
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
-%define base_version 2.22
+%define base_version 2.24
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -12,10 +12,10 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 11
+%define camelmajor 12
 %define camel_libname %mklibname camel %camelmajor
 
-%define camelprovidermajor 11
+%define camelprovidermajor 12
 %define camelprovider_libname %mklibname camel-provider %camelprovidermajor
 
 %define ebookmajor 9
@@ -30,7 +30,7 @@
 %define edatacalmajor 6
 %define edatacal_libname %mklibname edata-cal %edatacalmajor
 
-%define edataservermajor 9
+%define edataservermajor 11
 %define edataserver_libname %mklibname edataserver %edataservermajor
 %define edataserver_libnamedev %mklibname -d edataserver
 
@@ -45,6 +45,9 @@
 
 %define gdatamajor 1
 %define gdata_libname %mklibname gdata %gdatamajor
+
+%define ebackendmajor 0
+%define ebackend_libname %mklibname ebackend %ebackendmajor
 
 # disable under and over linking check, Makefile.am patch isn't enough
 
@@ -186,6 +189,14 @@ Requires:	%{name} >= %{version}-%{release}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
+%package -n %{ebackend_libname}
+Summary:	Shared libraries for using Evolution Data Server
+Group:		System/Libraries
+Requires:	%{name} >= %{version}-%{release}
+
+%description -n %{ebackend_libname}
+Evolution Data Server provides a central location for your addressbook
+and calendar in the gnome desktop.
 
 %package -n %{edataserver_libnamedev}
 Summary:	Libraries and include files for using Evolution Data Server
@@ -202,6 +213,7 @@ Requires: %edataserverui_libname = %version
 Requires: %egroupwise_libname = %version
 Requires: %exchange_libname = %version
 Requires: %gdata_libname = %version
+Requires: %ebackend_libname = %version
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides: libedataserver-devel = %version-%release
@@ -306,6 +318,12 @@ and calendar in the gnome desktop.
 %if %mdkversion < 200900
 %postun -n %gdata_libname -p /sbin/ldconfig
 %endif
+%if %mdkversion < 200900
+%post -n %ebackend_libname -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
+%postun -n %ebackend_libname -p /sbin/ldconfig
+%endif
 
 
 %files -f %{name}-%{base_version}.lang
@@ -364,6 +382,10 @@ and calendar in the gnome desktop.
 %defattr(-, root, root)
 %{_libdir}/libgdata-%{api_version}.so.%{gdatamajor}*
 %{_libdir}/libgdata-google-%{api_version}.so.%{gdatamajor}*
+
+%files -n %{ebackend_libname}
+%defattr(-, root, root)
+%{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
 
 %files -n %{edataserver_libnamedev}
 %defattr(-, root, root)
