@@ -72,6 +72,7 @@ BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
 BuildRequires: nspr-devel >= %{firefox_version}
 BuildRequires: openldap-devel 
+BuildRequires: sqlite3-devel >= 3.5
 BuildRequires: intltool
 BuildRequires: db4-devel
 
