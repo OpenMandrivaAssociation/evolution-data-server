@@ -1,4 +1,4 @@
-%define version 2.23.4
+%define version 2.23.5
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.24
@@ -12,11 +12,8 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 12
+%define camelmajor 13
 %define camel_libname %mklibname camel %camelmajor
-
-%define camelprovidermajor 12
-%define camelprovider_libname %mklibname camel-provider %camelprovidermajor
 
 %define ebookmajor 9
 %define ebook_libname %mklibname ebook %ebookmajor
@@ -92,15 +89,6 @@ Requires:	%{name} >= %{version}-%{release}
 Obsoletes: %oldlibname2006
 
 %description -n %{camel_libname}
-Evolution Data Server provides a central location for your addressbook
-and calendar in the gnome desktop.
-
-%package -n %{camelprovider_libname}
-Summary:	Shared libraries for using Evolution Data Server
-Group:		System/Libraries
-Requires:	%{name} >= %{version}-%{release}
-
-%description -n %{camelprovider_libname}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
@@ -203,7 +191,6 @@ Summary:	Libraries and include files for using Evolution Data Server
 Group:		Development/GNOME and GTK+
 Requires:	%{name} = %{version}
 Requires: %camel_libname = %version
-Requires: %camelprovider_libname = %version
 Requires: %ebook_libname = %version
 Requires: %ecal_libname = %version
 Requires: %edatabook_libname = %version
@@ -237,7 +224,9 @@ and calendar in the gnome desktop.
 
 %configure2_5x --with-krb5=%{_prefix} --with-krb5-libs=%{_libdir} \
 --without-krb4 --with-libdb=%{_prefix} \
---with-openldap=yes --with-static-ldap=no --enable-gtk-doc=yes 
+--with-openldap=yes --with-static-ldap=no 
+#gw: http://bugzilla.gnome.org/show_bug.cgi?id=544126
+#--enable-gtk-doc=yes 
 #--enable-gnome-keyring=yes
 %make
 
@@ -257,12 +246,6 @@ and calendar in the gnome desktop.
 %endif
 %if %mdkversion < 200900
 %postun -n %camel_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %camelprovider_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %camelprovider_libname -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
 %post -n %ebook_libname -p /sbin/ldconfig
@@ -341,10 +324,7 @@ and calendar in the gnome desktop.
 %files -n %{camel_libname}
 %defattr(-, root, root)
 %{_libdir}/libcamel-%{api_version}.so.%{camelmajor}*
-
-%files -n %{camelprovider_libname}
-%defattr(-, root, root)
-%{_libdir}/libcamel-provider-%{api_version}.so.%{camelprovidermajor}*
+%{_libdir}/libcamel-provider-%{api_version}.so.%{camelmajor}*
 
 %files -n %{ebook_libname}
 %defattr(-, root, root)
