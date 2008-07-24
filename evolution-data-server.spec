@@ -60,6 +60,7 @@ Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
+Patch1: evolution-data-server-fix-gtkdoc-build.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -217,17 +218,16 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 #%patch0 -p1 -b .fixlinking
+%patch1 -p1
 
-#needed by patch0
-#automake
+#eeded by patch0,1
+automake
 
 %build
 
 %configure2_5x --with-krb5=%{_prefix} --with-krb5-libs=%{_libdir} \
 --without-krb4 --with-libdb=%{_prefix} \
---with-openldap=yes --with-static-ldap=no 
-#gw: http://bugzilla.gnome.org/show_bug.cgi?id=544126
-#--enable-gtk-doc=yes 
+--with-openldap=yes --with-static-ldap=no --enable-gtk-doc=yes 
 #--enable-gnome-keyring=yes
 %make
 
