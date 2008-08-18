@@ -1,3 +1,8 @@
+%define nspr_major 4
+%define nss_major 3
+
+%define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutils%{nss_major}
+
 %define version 2.23.90
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
@@ -208,7 +213,6 @@ Provides: libedataserver-devel = %version-%release
 Requires: nss-devel >= %{firefox_version}
 Requires: nspr-devel >= %{firefox_version}
 Obsoletes: %mklibname -d edataserver 9
-%define _requires_exceptions nspr4\\|plc4\\|plds4\\|nss3\\|smime3\\|softokn3\\|ssl3
 
 %description -n %{edataserver_libnamedev}
 Evolution Data Server provides a central location for your addressbook
