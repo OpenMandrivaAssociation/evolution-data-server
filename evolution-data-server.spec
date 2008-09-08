@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.23.91
+%define version 2.23.92
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.24
@@ -60,7 +60,7 @@ Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
 Release: %mkrel 1
-License: 	LGPLv2
+License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
