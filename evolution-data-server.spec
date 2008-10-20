@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.24.0
+%define version 2.24.1
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.24
@@ -17,7 +17,7 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 13
+%define camelmajor 14
 %define camel_libname %mklibname camel %camelmajor
 
 %define ebookmajor 9
@@ -59,14 +59,12 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 2
+Release: %mkrel 1
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
-# (fc) 2.24.0-2mdv various bug fixes from SVN
-Patch1: evolution-data-server-2.24.0-svnfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -223,7 +221,6 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 #%patch0 -p1 -b .fixlinking
-%patch1 -p1 -b .svnfixes
 
 #needed by patch0
 #automake
