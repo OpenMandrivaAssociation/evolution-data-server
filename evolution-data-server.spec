@@ -3,10 +3,10 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.24.1
+%define version 2.25.1
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
-%define base_version 2.24
+%define base_version 2.26
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -17,7 +17,7 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 14
+%define camelmajor 13
 %define camel_libname %mklibname camel %camelmajor
 
 %define ebookmajor 9
@@ -221,7 +221,6 @@ and calendar in the gnome desktop.
 %prep
 %setup -q
 #%patch0 -p1 -b .fixlinking
-
 #needed by patch0
 #automake
 
