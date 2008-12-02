@@ -80,6 +80,8 @@ BuildRequires: openldap-devel
 BuildRequires: sqlite3-devel >= 3.5
 BuildRequires: intltool
 BuildRequires: db4-devel
+#gw libtool dep:
+BuildRequires: libtasn1-devel
 
 Obsoletes: %oldlibname
 
