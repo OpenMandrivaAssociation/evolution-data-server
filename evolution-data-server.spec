@@ -59,7 +59,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -80,8 +80,6 @@ BuildRequires: openldap-devel
 BuildRequires: sqlite3-devel >= 3.5
 BuildRequires: intltool
 BuildRequires: db4-devel
-#gw libtool dep:
-BuildRequires: libtasn1-devel
 
 Obsoletes: %oldlibname
 
