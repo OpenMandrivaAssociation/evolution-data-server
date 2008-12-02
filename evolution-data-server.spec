@@ -69,7 +69,7 @@ URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 BuildRequires: bison flex
-BuildRequires: gtk-doc
+BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
