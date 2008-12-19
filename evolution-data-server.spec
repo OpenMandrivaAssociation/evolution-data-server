@@ -74,6 +74,7 @@ BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
+BuildRequires: libgweather-devel
 BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
 BuildRequires: nspr-devel >= %{firefox_version}
