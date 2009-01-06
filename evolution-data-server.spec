@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.25.3
+%define version 2.25.4
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.26
@@ -74,7 +74,7 @@ BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
-BuildRequires: libgweather-devel
+BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
 BuildRequires: nspr-devel >= %{firefox_version}
