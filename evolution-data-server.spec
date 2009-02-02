@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.25.5
+%define version 2.25.90
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.26
@@ -17,7 +17,7 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 13
+%define camelmajor 14
 %define camel_libname %mklibname camel %camelmajor
 
 %define ebookmajor 9
@@ -65,7 +65,7 @@ Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
-Patch1: evolution-data-server-2.25.3-format-strings.patch
+Patch1: evolution-data-server-2.25.90-format-strings.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -80,6 +80,7 @@ BuildRequires: nss-devel >= %{firefox_version}
 BuildRequires: nspr-devel >= %{firefox_version}
 BuildRequires: openldap-devel 
 BuildRequires: sqlite3-devel >= 3.5
+BuildRequires: libical-devel
 BuildRequires: intltool
 BuildRequires: db4-devel
 
