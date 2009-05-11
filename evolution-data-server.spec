@@ -3,10 +3,10 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.26.1.1
+%define version 2.27.1
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
-%define base_version 2.26
+%define base_version 2.28
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
