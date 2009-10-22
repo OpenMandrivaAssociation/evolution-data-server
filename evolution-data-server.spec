@@ -72,6 +72,7 @@ BuildRequires: bison flex
 BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
 BuildRequires: libglade2.0-devel
+BuildRequires: libbonobo2_x-devel
 BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
