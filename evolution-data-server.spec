@@ -3,10 +3,10 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.28.1
+%define version 2.29.3
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
-%define base_version 2.28
+%define base_version 2.30
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -42,9 +42,6 @@
 %define egroupwisemajor 13
 %define egroupwise_libname %mklibname egroupwise %egroupwisemajor
 
-%define exchangemajor 3
-%define exchange_libname %mklibname exchange-storage %exchangemajor
-
 %define gdatamajor 1
 %define gdata_libname %mklibname gdata %gdatamajor
 
@@ -72,7 +69,6 @@ BuildRequires: bison flex
 BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
 BuildRequires: libglade2.0-devel
-BuildRequires: libbonobo2_x-devel
 BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
@@ -167,15 +163,6 @@ Requires:	%{name} >= %{version}-%{release}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{exchange_libname}
-Summary:	Shared libraries for using Evolution Data Server
-Group:		System/Libraries
-Requires:	%{name} >= %{version}-%{release}
-
-%description -n %{exchange_libname}
-Evolution Data Server provides a central location for your addressbook
-and calendar in the gnome desktop.
-
 %package -n %{gdata_libname}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
@@ -206,7 +193,6 @@ Requires: %edatacal_libname = %version
 Requires: %edataserver_libname = %version
 Requires: %edataserverui_libname = %version
 Requires: %egroupwise_libname = %version
-Requires: %exchange_libname = %version
 Requires: %gdata_libname = %version
 Requires: %ebackend_libname = %version
 Provides:	lib%{name}-devel = %{version}-%{release}
@@ -294,12 +280,6 @@ and calendar in the gnome desktop.
 %postun -n %egroupwise_libname -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
-%post -n %exchange_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %exchange_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
 %post -n %gdata_libname -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
@@ -316,13 +296,14 @@ and calendar in the gnome desktop.
 %files -f %{name}-%{base_version}.lang
 %defattr(-, root, root)
 %doc COPYING NEWS
-%{_libexecdir}/%{name}-%{base_version}
 %{_libexecdir}/%{name}-%{api_version}
 %{_libexecdir}/camel-index-control-%{api_version}
+%_libexecdir/e-addressbook-factory
+%_libexecdir/e-calendar-factory
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
-%{_libdir}/bonobo/servers/*
-%{_datadir}/idl/%{name}-%{api_version}
 %{_datadir}/%{name}-%{base_version}
+%_datadir/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
+%_datadir/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
 %{_datadir}/pixmaps/%{name}
 
 %files -n %{camel_libname}
@@ -357,10 +338,6 @@ and calendar in the gnome desktop.
 %files -n %{egroupwise_libname}
 %defattr(-, root, root)
 %{_libdir}/libegroupwise-%{api_version}.so.%{egroupwisemajor}*
-
-%files -n %{exchange_libname}
-%defattr(-, root, root)
-%{_libdir}/libexchange-storage-%{api_version}.so.%{exchangemajor}*
 
 %files -n %{gdata_libname}
 %defattr(-, root, root)
