@@ -216,7 +216,7 @@ and calendar in the gnome desktop.
 %build
 
 %configure2_5x --with-krb5=%{_prefix} --with-krb5-libs=%{_libdir} \
---without-krb4 --with-libdb=%{_prefix} \
+--with-libdb=%{_prefix} \
 --with-openldap=yes --with-static-ldap=no --enable-gtk-doc=yes 
 #--enable-gnome-keyring=yes
 %make
