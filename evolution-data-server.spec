@@ -56,12 +56,14 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
+# (fc) 2.30.1-2mdv various GIT fixes (GIT)
+Patch1: evolution-data-server-2.30.1-gitfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -212,6 +214,7 @@ and calendar in the gnome desktop.
 #%patch0 -p1 -b .fixlinking
 #needed by patch0
 #automake
+%patch1 -p1 -b .gitfixes
 
 %build
 
