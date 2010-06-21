@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.30.1
+%define version 2.30.2
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.30
@@ -32,7 +32,7 @@
 %define edatacalmajor 7
 %define edatacal_libname %mklibname edata-cal %edatacalmajor
 
-%define edataservermajor 11
+%define edataservermajor 13
 %define edataserver_libname %mklibname edataserver %edataservermajor
 %define edataserver_libnamedev %mklibname -d edataserver
 
@@ -56,14 +56,12 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 5
+Release: %mkrel 1
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # fix underlinking (not working for now)
 Patch0: evolution-data-server-2.22.2-fix-linking.patch
-# (fc) 2.30.1-2mdv various GIT fixes (GIT)
-Patch1: evolution-data-server-2.30.1-gitfixes.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -214,7 +212,6 @@ and calendar in the gnome desktop.
 #%patch0 -p1 -b .fixlinking
 #needed by patch0
 #automake
-%patch1 -p1 -b .gitfixes
 
 %build
 
