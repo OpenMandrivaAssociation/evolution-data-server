@@ -3,10 +3,10 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.31.5
+%define version 2.31.6
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
-%define base_version 3.0
+%define base_version 2.32
 %define lib_major 6
 %define lib_name %mklibname %{name} %{lib_major}
 %define firefox_version 1.0.1
@@ -17,7 +17,7 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %name %oldmajor2006
 
-%define camelmajor 18
+%define camelmajor 19
 %define camel_libname %mklibname camel %camelmajor
 
 %define ebookmajor 10
@@ -26,10 +26,10 @@
 %define ecalmajor 8
 %define ecal_libname %mklibname ecal %ecalmajor
 
-%define edatabookmajor 3
+%define edatabookmajor 8
 %define edatabook_libname %mklibname edata-book %edatabookmajor
 
-%define edatacalmajor 8
+%define edatacalmajor 10
 %define edatacal_libname %mklibname edata-cal %edatacalmajor
 
 %define edataservermajor 14
