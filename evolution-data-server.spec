@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.31.90
+%define version 2.31.91
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.32
@@ -36,7 +36,7 @@
 %define edataserver_libname %mklibname edataserver %edataservermajor
 %define edataserver_libnamedev %mklibname -d edataserver
 
-%define edataserveruimajor 10
+%define edataserveruimajor 11
 %define edataserverui_libname %mklibname edataserverui %edataserveruimajor
 
 %define egroupwisemajor 13
