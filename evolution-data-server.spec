@@ -3,7 +3,7 @@
 
 %define _requires_exceptions nspr%{nspr_major}\\|plc%{nspr_major}\\|plds%{nspr_major}\\|nss%{nss_major}\\|smime%{nss_major}\\|softokn%{nss_major}\\|ssl%{nss_major}\\|nssutil%{nss_major}
 
-%define version 2.31.91
+%define version 2.31.92
 %define libsoup_version_required 2.3.0
 %define api_version 1.2
 %define base_version 2.32
@@ -220,61 +220,6 @@ and calendar in the gnome desktop.
 
 %clean
 [ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post -n %camel_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %camel_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %ebook_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %ebook_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %ecal_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %ecal_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %edatabook_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %edatabook_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %edatacal_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %edatacal_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %edataserver_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %edataserver_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %edataserverui_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %edataserverui_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %egroupwise_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %egroupwise_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%post -n %ebackend_libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %ebackend_libname -p /sbin/ldconfig
-%endif
 
 
 %files -f %{name}-%{base_version}.lang
