@@ -45,20 +45,13 @@
 %define ebackendmajor 0
 %define ebackend_libname %mklibname ebackend %ebackendmajor
 
-# disable under and over linking check, Makefile.am patch isn't enough
-
-%define _disable_ld_as_needed 1
-%define _disable_ld_no_undefined 1
-
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# fix underlinking (not working for now)
-Patch0: evolution-data-server-2.22.2-fix-linking.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
