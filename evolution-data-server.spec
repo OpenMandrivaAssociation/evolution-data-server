@@ -52,6 +52,7 @@ Release: %mkrel 2
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch0:		evolution-data-server-2.32.2-gtk24.patch
 URL: 		http://www.gnome.org/projects/evolution/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -193,9 +194,7 @@ and calendar in the gnome desktop.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .fixlinking
-#needed by patch0
-#automake
+%patch0 -p1 -b .gtk24
 
 %build
 
