@@ -48,7 +48,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version: %version
-Release: %mkrel 2
+Release: %mkrel 3
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -60,7 +60,6 @@ BuildRequires: bison flex
 BuildRequires: gperf
 BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: krb5-devel
-BuildRequires: libglade2.0-devel
 BuildRequires: libgweather-devel >= 2.25.4
 BuildRequires: libsoup-devel >= %{libsoup_version_required}
 BuildRequires: nss-devel >= %{firefox_version}
@@ -70,8 +69,11 @@ BuildRequires: libgdata-devel >= 0.6.3
 BuildRequires: openldap-devel 
 BuildRequires: sqlite3-devel >= 3.5
 BuildRequires: libical-devel
+BuildRequires: libxml2-devel
+BuildRequires: libGConf2-devel GConf2
+BuildRequires: libgnome-keyring-devel
 BuildRequires: intltool
-BuildRequires: db4-devel
+BuildRequires: db-devel
 
 Obsoletes: %oldlibname
 
