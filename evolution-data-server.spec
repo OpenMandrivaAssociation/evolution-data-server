@@ -55,7 +55,7 @@ URL: 		http://www.gnome.org/projects/evolution/
 ### Build Dependencies ###
 
 BuildRequires: bison
-BuildRequires: db4-devel
+BuildRequires: db-devel
 BuildRequires: gettext
 BuildRequires: gnome-common
 BuildRequires: gperf
