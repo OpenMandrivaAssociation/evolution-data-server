@@ -1,6 +1,6 @@
 %define api_version 1.2
 %define base_version 3.0
-%define dir_version	3.2
+%define dir_version	3.4
 
 %define oldmajor 6
 %define oldlibname %mklibname %{name} %{oldmajor}
@@ -8,31 +8,31 @@
 %define oldmajor2006 4
 %define oldlibname2006 %mklibname %{name} %{oldmajor2006}
 
-%define camelmajor 29
+%define camelmajor 33
 %define camel_libname %mklibname camel %{camelmajor}
 %define camel_devel %mklibname camel -d
 
-%define ebackendmajor 1
+%define ebackendmajor 2
 %define ebackend_libname %mklibname ebackend %{ebackendmajor}
 %define ebackend_devel %mklibname ebackend -d
 
-%define ebookmajor 12
+%define ebookmajor 13
 %define ebook_libname %mklibname ebook %{ebookmajor}
 %define ebook_devel %mklibname ebook -d
 
-%define ecalmajor 10
+%define ecalmajor 11
 %define ecal_libname %mklibname ecal %{ecalmajor}
 %define ecal_devel %mklibname ecal -d
 
-%define edatabookmajor 11
+%define edatabookmajor 13
 %define edatabook_libname %mklibname edata-book %{edatabookmajor}
 %define edatabook_devel %mklibname edata-book -d
 
-%define edatacalmajor 13
+%define edatacalmajor 15
 %define edatacal_libname %mklibname edata-cal %{edatacalmajor}
 %define edatacal_devel %mklibname edata-cal -d
 
-%define edataservermajor 15
+%define edataservermajor 16
 %define edataserver_libname %mklibname edataserver %{edataservermajor}
 %define edataserver_devel %mklibname -d edataserver
 
@@ -45,8 +45,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.2.2
-Release:    1
+Version:	3.4.1
+Release:    0
 License: 	LGPLv2+
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -261,19 +261,21 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %doc COPYING NEWS
 %{_libexecdir}/%{name}
 %{_libexecdir}/camel-index-control-%{api_version}
-#{_libexecdir}/evolution-addressbook-factory
-#{_libexecdir}/evolution-calendar-factory
-%{_libexecdir}/e-addressbook-factory
-%{_libexecdir}/e-calendar-factory
+%{_libexecdir}/evolution-addressbook-factory
+%{_libexecdir}/evolution-calendar-factory
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}-%{dir_version}
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
 %{_datadir}/pixmaps/%{name}
 
+#GSettings
+%{_datadir}/GConf/gsettings/libedataserver.convert
+%{_datadir}/glib-2.0/schemas/org.gnome.evolution.eds-shell.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.evolution.shell.network-config.gschema.xml
+
 %files -n %{camel_libname}
 %{_libdir}/libcamel-%{api_version}.so.%{camelmajor}*
-%{_libdir}/libcamel-provider-%{api_version}.so.%{camelmajor}*
 
 %files -n %{ebackend_libname}
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
@@ -305,9 +307,9 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %doc %{_datadir}/gtk-doc/html/camel/*
 %{_includedir}/%{name}-%{dir_version}/camel
 %{_libdir}/pkgconfig/camel-%{api_version}.pc
-%{_libdir}/pkgconfig/camel-provider-%{api_version}.pc
+##{_libdir}/pkgconfig/camel-provider-%{api_version}.pc
 %{_libdir}/libcamel-%{api_version}.so
-%{_libdir}/libcamel-provider-%{api_version}.so
+##{_libdir}/libcamel-provider-%{api_version}.so
 
 %files -n %{ebackend_devel}
 %doc %{_datadir}/gtk-doc/html/libebackend/*
