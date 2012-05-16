@@ -1,8 +1,8 @@
-%define api_version 1.2
-%define base_version 3.0
+%define api		1.2
+%define base_version	3.0
 %define dir_version	3.4
 
-%define oldmajor 6
+%define oldmajor	6
 %define oldlibname %mklibname %{name} %{oldmajor}
 
 %define oldmajor2006 4
@@ -40,29 +40,27 @@
 %define edataserverui_libname %mklibname edataserverui %{edataserveruimajor}
 %define edataserverui_devel %mklibname edataserverui -d
 
-%define gi_major 1.2
-%define girname %mklibname %{name}-gir %{gi_major}
+%define girmajor 1.2
+%define girname %mklibname %{name}-gir %{girmajor}
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.4.1
-Release:    0
+Version:	3.4.2
+Release:	1
 License: 	LGPLv2+
 Group:		System/Libraries
-Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL: 		http://www.gnome.org/projects/evolution/
+Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 
-### Build Dependencies ###
-
-BuildRequires: bison
-BuildRequires: db-devel
-BuildRequires: gettext
-BuildRequires: gnome-common
-BuildRequires: gperf
-BuildRequires: gtk-doc
-BuildRequires: intltool
-BuildRequires: openldap-devel
-BuildRequires: krb5-devel
+BuildRequires:	bison
+BuildRequires:	db-devel
+BuildRequires:	gettext
+BuildRequires:	gnome-common
+BuildRequires:	gperf
+BuildRequires:	gtk-doc
+BuildRequires:	intltool
+BuildRequires:	openldap-devel
+BuildRequires:	krb5-devel
 BuildRequires:	pkgconfig(gio-2.0) >= 2.28
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:	pkgconfig(gconf-2.0) >= 2.0.0
@@ -260,10 +258,10 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %files -f %{name}-%{dir_version}.lang
 %doc COPYING NEWS
 %{_libexecdir}/%{name}
-%{_libexecdir}/camel-index-control-%{api_version}
+%{_libexecdir}/camel-index-control-%{api}
 %{_libexecdir}/evolution-addressbook-factory
 %{_libexecdir}/evolution-calendar-factory
-%attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
+%attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api}
 %{_datadir}/%{name}-%{dir_version}
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
@@ -275,87 +273,87 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.shell.network-config.gschema.xml
 
 %files -n %{camel_libname}
-%{_libdir}/libcamel-%{api_version}.so.%{camelmajor}*
+%{_libdir}/libcamel-%{api}.so.%{camelmajor}*
 
 %files -n %{ebackend_libname}
-%{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
+%{_libdir}/libebackend-%{api}.so.%{ebackendmajor}*
 
 %files -n %{ebook_libname}
-%{_libdir}/libebook-%{api_version}.so.%{ebookmajor}*
+%{_libdir}/libebook-%{api}.so.%{ebookmajor}*
 
 %files -n %{ecal_libname}
-%{_libdir}/libecal-%{api_version}.so.%{ecalmajor}*
+%{_libdir}/libecal-%{api}.so.%{ecalmajor}*
 
 %files -n %{edatabook_libname}
-%{_libdir}/libedata-book-%{api_version}.so.%{edatabookmajor}*
+%{_libdir}/libedata-book-%{api}.so.%{edatabookmajor}*
 
 %files -n %{edatacal_libname}
-%{_libdir}/libedata-cal-%{api_version}.so.%{edatacalmajor}*
+%{_libdir}/libedata-cal-%{api}.so.%{edatacalmajor}*
 
 %files -n %{edataserver_libname}
-%{_libdir}/libedataserver-%{api_version}.so.%{edataservermajor}*
+%{_libdir}/libedataserver-%{api}.so.%{edataservermajor}*
 
 %files -n %{edataserverui_libname}
 %{_libdir}/libedataserverui-%{base_version}.so.%{edataserveruimajor}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/EDataServer-%{gi_major}.typelib
-%{_libdir}/girepository-1.0/ECalendar-%{gi_major}.typelib
-%{_libdir}/girepository-1.0/EBook-%{gi_major}.typelib
+%{_libdir}/girepository-1.0/EDataServer-%{girmajor}.typelib
+%{_libdir}/girepository-1.0/ECalendar-%{girmajor}.typelib
+%{_libdir}/girepository-1.0/EBook-%{girmajor}.typelib
 
 %files -n %{camel_devel}
 %doc %{_datadir}/gtk-doc/html/camel/*
 %{_includedir}/%{name}-%{dir_version}/camel
-%{_libdir}/pkgconfig/camel-%{api_version}.pc
-##{_libdir}/pkgconfig/camel-provider-%{api_version}.pc
-%{_libdir}/libcamel-%{api_version}.so
-##{_libdir}/libcamel-provider-%{api_version}.so
+%{_libdir}/pkgconfig/camel-%{api}.pc
+##{_libdir}/pkgconfig/camel-provider-%{api}.pc
+%{_libdir}/libcamel-%{api}.so
+##{_libdir}/libcamel-provider-%{api}.so
 
 %files -n %{ebackend_devel}
 %doc %{_datadir}/gtk-doc/html/libebackend/*
 %{_includedir}/%{name}-%{dir_version}/libebackend
-%{_libdir}/pkgconfig/libebackend-%{api_version}.pc
-%{_libdir}/libebackend-%{api_version}.so
+%{_libdir}/pkgconfig/libebackend-%{api}.pc
+%{_libdir}/libebackend-%{api}.so
 
 %files -n %{ebook_devel}
 %doc %{_datadir}/gtk-doc/html/libebook/*
 %{_includedir}/%{name}-%{dir_version}/libebook/
-%{_libdir}/pkgconfig/libebook-%{api_version}.pc
-%{_libdir}/libebook-%{api_version}.so
+%{_libdir}/pkgconfig/libebook-%{api}.pc
+%{_libdir}/libebook-%{api}.so
 
 %files -n %{ecal_devel}
 %doc %{_datadir}/gtk-doc/html/libecal/*
 %{_includedir}/%{name}-%{dir_version}/libecal/
-%{_libdir}/pkgconfig/libecal-%{api_version}.pc
-%{_libdir}/libecal-%{api_version}.so
-%{_datadir}/gir-1.0/ECalendar-%{gi_major}.gir
+%{_libdir}/pkgconfig/libecal-%{api}.pc
+%{_libdir}/libecal-%{api}.so
+%{_datadir}/gir-1.0/ECalendar-%{girmajor}.gir
 
 %files -n %{edatabook_devel}
 %doc %{_datadir}/gtk-doc/html/libedata-book/*
 %{_includedir}/%{name}-%{dir_version}/libedata-book/
-%{_libdir}/pkgconfig/libedata-book-%{api_version}.pc
-%{_libdir}/libedata-book-%{api_version}.so
-%{_datadir}/gir-1.0/EBook-%{gi_major}.gir
+%{_libdir}/pkgconfig/libedata-book-%{api}.pc
+%{_libdir}/libedata-book-%{api}.so
+%{_datadir}/gir-1.0/EBook-%{girmajor}.gir
 
 %files -n %{edatacal_devel}
 %doc %{_datadir}/gtk-doc/html/libedata-cal/*
 %{_includedir}/%{name}-%{dir_version}/libedata-cal/
-%{_libdir}/pkgconfig/libedata-cal-%{api_version}.pc
-%{_libdir}/libedata-cal-%{api_version}.so
+%{_libdir}/pkgconfig/libedata-cal-%{api}.pc
+%{_libdir}/libedata-cal-%{api}.so
 
 %files -n %{edataserver_devel}
 %doc %{_datadir}/gtk-doc/html/libedataserver/*
 %{_includedir}/%{name}-%{dir_version}/libedataserver/
-%{_libdir}/pkgconfig/libedataserver-%{api_version}.pc
-%{_libdir}/pkgconfig/evolution-data-server-%{api_version}.pc
-%{_libdir}/libedataserver-%{api_version}.so
-%{_datadir}/gir-1.0/EDataServer-%{gi_major}.gir
+%{_libdir}/pkgconfig/libedataserver-%{api}.pc
+%{_libdir}/pkgconfig/evolution-data-server-%{api}.pc
+%{_libdir}/libedataserver-%{api}.so
+%{_datadir}/gir-1.0/EDataServer-%{girmajor}.gir
 
 %files -n %{edataserverui_devel}
 %doc %{_datadir}/gtk-doc/html/libedataserverui/*
 %{_includedir}/%{name}-%{dir_version}/libedataserverui/
-#{_libdir}/pkgconfig/libedataserverui-%{api_version}.pc
+#{_libdir}/pkgconfig/libedataserverui-%{api}.pc
 %{_libdir}/pkgconfig/libedataserverui-*.pc
-#{_libdir}/libedataserverui-%{api_version}.so
+#{_libdir}/libedataserverui-%{api}.so
 %{_libdir}/libedataserverui-*.so
 
