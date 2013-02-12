@@ -248,7 +248,6 @@ GObject Introspection interface description for %{name}.
 	--with-openldap=yes \
 	--with-static-ldap=no \
 	--enable-gtk-doc=yes 
-#	--enable-gnome-keyring=yes
 
 %make
 
@@ -368,8 +367,6 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %files -n %{edataserverui_devel}
 %doc %{_datadir}/gtk-doc/html/libedataserverui/*
 %{_includedir}/%{name}-%{dir_version}/libedataserverui/
-#{_libdir}/pkgconfig/libedataserverui-%{api}.pc
-%{_libdir}/pkgconfig/libedataserverui-*.pc
-#{_libdir}/libedataserverui-%{api}.so
-%{_libdir}/libedataserverui-*.so
+%{_libdir}/pkgconfig/libedataserverui-%{base_version}.pc
+%{_libdir}/libedataserverui-%{base_version}.so
 
