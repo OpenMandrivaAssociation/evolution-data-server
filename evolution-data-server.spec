@@ -53,6 +53,7 @@ License: 	LGPLv2+
 Group:		System/Libraries
 URL: 		http://www.gnome.org/projects/evolution/
 Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source1:	evolution-data-server.rpmlintrc
 
 BuildRequires:	bison
 BuildRequires:	db-devel
