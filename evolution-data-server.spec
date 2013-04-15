@@ -1,59 +1,52 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api		1.2
-%define base_version	3.0
-%define dir_version	3.6
-
-%define oldmajor	6
-%define oldlibname %mklibname %{name} %{oldmajor}
-
-%define oldmajor2006 4
-%define oldlibname2006 %mklibname %{name} %{oldmajor2006}
+%define api	1.2
+%define uiapi	3.0
 
 %define camelmajor 40
-%define camel_libname %mklibname camel %{camelmajor}
-%define camel_devel %mklibname camel -d
+%define libcamel %mklibname camel %{api} %{camelmajor}
+%define devcamel %mklibname camel -d
 
 %define ebackendmajor 5
-%define ebackend_libname %mklibname ebackend %{ebackendmajor}
-%define ebackend_devel %mklibname ebackend -d
+%define libebackend %mklibname ebackend %{api} %{ebackendmajor}
+%define devebackend %mklibname ebackend -d
 
 %define ebookmajor 14
-%define ebook_libname %mklibname ebook %{ebookmajor}
-%define ebook_devel %mklibname ebook -d
+%define libebook %mklibname ebook %{api} %{ebookmajor}
+%define devebook %mklibname ebook -d
 
 %define ecalmajor 15
-%define ecal_libname %mklibname ecal %{ecalmajor}
-%define ecal_devel %mklibname ecal -d
+%define libecal %mklibname ecal %{api} %{ecalmajor}
+%define devecal %mklibname ecal -d
 
 %define edatabookmajor 15
-%define edatabook_libname %mklibname edata-book %{edatabookmajor}
-%define edatabook_devel %mklibname edata-book -d
+%define libedatabook %mklibname edata-book %{api} %{edatabookmajor}
+%define devedatabook %mklibname edata-book -d
 
 %define edatacalmajor 18
-%define edatacal_libname %mklibname edata-cal %{edatacalmajor}
-%define edatacal_devel %mklibname edata-cal -d
+%define libedatacal %mklibname edata-cal %{api} %{edatacalmajor}
+%define devedatacal %mklibname edata-cal -d
 
 %define edataservermajor 17
-%define edataserver_libname %mklibname edataserver %{edataservermajor}
-%define edataserver_devel %mklibname -d edataserver
+%define libedataserver %mklibname edataserver %{api} %{edataservermajor}
+%define devedataserver %mklibname -d edataserver
 
 %define edataserveruimajor 4
-%define edataserverui_libname %mklibname edataserverui %{edataserveruimajor}
-%define edataserverui_devel %mklibname edataserverui -d
+%define libedataserverui %mklibname edataserverui %{uiapi} %{edataserveruimajor}
+%define devedataserverui %mklibname edataserverui -d
 
-%define girmajor 1.2
-%define girname %mklibname %{name}-gir %{girmajor}
+%define girname		%mklibname edataserver-gir %{api}
+%define	girecalendar	%mklibname ecalendar-gir %{api}
+%define	girebook	%mklibname ebook-gir %{api}
 
-Name:		evolution-data-server
 Summary:	Evolution Data Server
+Name:		evolution-data-server
 Version:	3.6.4
-Release:	1
+Release:	2
 License: 	LGPLv2+
 Group:		System/Libraries
-URL: 		http://www.gnome.org/projects/evolution/
-Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-Source1:	evolution-data-server.rpmlintrc
+Url: 		http://www.gnome.org/projects/evolution/
+Source0: 	http://ftp.gnome.org/pub/GNOME/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	bison
 BuildRequires:	db-devel
@@ -81,160 +74,180 @@ BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 
-Obsoletes: %oldlibname
-
 %description
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{camel_libname}
+%package -n %{libcamel}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
-Obsoletes: %oldlibname2006
+Obsoletes:	%{_lib}camel40 < 3.6.4-2
 
-%description -n %{camel_libname}
+%description -n %{libcamel}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ebackend_libname}
+%package -n %{libebackend}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
+Obsoletes:	%{_lib}ebackend5 < 3.6.4-2
 
-%description -n %{ebackend_libname}
+%description -n %{libebackend}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ebook_libname}
+%package -n %{libebook}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
+Obsoletes:	%{_lib}ebook14 < 3.6.4-2
 
-%description -n %{ebook_libname}
+%description -n %{libebook}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ecal_libname}
+%package -n %{libecal}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
+Obsoletes:	%{_lib}ecal15 < 3.6.4-2
 
-%description -n %{ecal_libname}
+%description -n %{libecal}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edatabook_libname}
+%package -n %{libedatabook}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
-Obsoletes: %oldlibname2006
+Obsoletes:	%{_lib}edata-book15 < 3.6.4-2
 
-%description -n %{edatabook_libname}
+%description -n %{libedatabook}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edatacal_libname}
+%package -n %{libedatacal}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
-Obsoletes: %oldlibname2006
+Obsoletes:	%{_lib}edata-cal18 < 3.6.4-2
 
-%description -n %{edatacal_libname}
+%description -n %{libedatacal}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edataserver_libname}
+%package -n %{libedataserver}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
-Obsoletes: %oldlibname2006
+Obsoletes:	%{_lib}edataserver17 < 3.6.4-2
 
-%description -n %{edataserver_libname}
+%description -n %{libedataserver}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edataserverui_libname}
+%package -n %{libedataserverui}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
-Obsoletes: %{_lib}edataserverui4
+Obsoletes:	%{_lib}edataserverui4 < 3.6.4-2
 
-%description -n %{edataserverui_libname}
+%description -n %{libedataserverui}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{camel_devel}
+%package -n %{devcamel}
 Summary:	Libraries and include files for using Evolution Data Server - camel
 Group:		Development/GNOME and GTK+
-Requires:	%{camel_libname} = %{version}-%{release}
+Requires:	%{libcamel} = %{version}-%{release}
 
-%description -n %{camel_devel}
+%description -n %{devcamel}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ebackend_devel}
+%package -n %{devebackend}
 Summary:	Libraries and include files for using Evolution Data Server - ebackend
 Group:		Development/GNOME and GTK+
-Requires:	%{ebackend_libname} = %{version}-%{release}
+Requires:	%{libebackend} = %{version}-%{release}
 
-%description -n %{ebackend_devel}
+%description -n %{devebackend}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ebook_devel}
+%package -n %{devebook}
 Summary:	Libraries and include files for using Evolution Data Server - ebook
 Group:		Development/GNOME and GTK+
-Requires:	%{ebook_libname} = %{version}-%{release}
+Requires:	%{libebook} = %{version}-%{release}
+Requires:	%{girebook} = %{version}-%{release}
 
-%description -n %{ebook_devel}
+%description -n %{devebook}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{ecal_devel}
+%package -n %{devecal}
 Summary:	Libraries and include files for using Evolution Data Server - ecal
 Group:		Development/GNOME and GTK+
-Requires:	%{ecal_libname} = %{version}-%{release}
+Requires:	%{libecal} = %{version}-%{release}
 
-%description -n %{ecal_devel}
+%description -n %{devecal}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edatabook_devel}
+%package -n %{devedatabook}
 Summary:	Libraries and include files for using Evolution Data Server - edatabook
 Group:		Development/GNOME and GTK+
-Requires:	%{edatabook_libname} = %{version}-%{release}
+Requires:	%{libedatabook} = %{version}-%{release}
 
-%description -n %{edatabook_devel}
+%description -n %{devedatabook}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edatacal_devel}
+%package -n %{devedatacal}
 Summary:	Libraries and include files for using Evolution Data Server - edatacal
 Group:		Development/GNOME and GTK+
-Requires:	%{edatacal_libname} = %{version}-%{release}
+Requires:	%{libedatacal} = %{version}-%{release}
+Requires:	%{girecalendar} = %{version}-%{release}
 
-%description -n %{edatacal_devel}
+%description -n %{devedatacal}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edataserver_devel}
+%package -n %{devedataserver}
 Summary:	Libraries and include files for using Evolution Data Server
 Group:		Development/GNOME and GTK+
-Requires:	%{edataserver_libname} = %{version}-%{release}
+Requires:	%{libedataserver} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%mklibname -d edataserver 9
 
-%description -n %{edataserver_devel}
+%description -n %{devedataserver}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
-%package -n %{edataserverui_devel}
+%package -n %{devedataserverui}
 Summary:	Libraries and include files for using Evolution Data Server - edatserverui
 Group:		Development/GNOME and GTK+
-Requires:	%{edataserverui_libname} = %{version}-%{release}
+Requires:	%{libedataserverui} = %{version}-%{release}
 
-%description -n %{edataserverui_devel}
+%description -n %{devedataserverui}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
 %package -n %{girname}
 Summary:        GObject Introspection interface description for %{name}
 Group:          System/Libraries
+Obsoletes:	%{_lib}evolution-data-server-gir1.2 < 3.6.4-2
 
 %description -n %{girname}
+GObject Introspection interface description for %{name}.
+
+%package -n %{girecalendar}
+Summary:        GObject Introspection interface description for %{name}
+Group:          System/Libraries
+Conflicts:	%{_lib}evolution-data-server-gir1.2 < 3.6.4-2
+
+%description -n %{girecalendar}
+GObject Introspection interface description for %{name}.
+
+%package -n %{girebook}
+Summary:        GObject Introspection interface description for %{name}
+Group:          System/Libraries
+Conflicts:	%{_lib}evolution-data-server-gir1.2 < 3.6.4-2
+
+%description -n %{girebook}
 GObject Introspection interface description for %{name}.
 
 %prep
@@ -261,9 +274,9 @@ find %{buildroot}/%{_libdir} -name '*.la' -exec rm {} \;
 # give the libraries some executable bits 
 find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 
-%find_lang %{name}-%{dir_version}
+%find_lang %{name}-%{url_ver}
 
-%files -f %{name}-%{dir_version}.lang
+%files -f %{name}-%{url_ver}.lang
 %doc COPYING NEWS
 %{_libexecdir}/%{name}
 %{_libexecdir}/camel-index-control-%{api}
@@ -273,7 +286,7 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/evolution-source-registry
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api}
-%{_datadir}/%{name}-%{dir_version}
+%{_datadir}/%{name}-%{url_ver}
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
@@ -288,86 +301,88 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution-data-server.addressbook.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution-data-server.calendar.gschema.xml
 
-%files -n %{camel_libname}
+%files -n %{libcamel}
 %{_libdir}/libcamel-%{api}.so.%{camelmajor}*
 
-%files -n %{ebackend_libname}
+%files -n %{libebackend}
 %{_libdir}/libebackend-%{api}.so.%{ebackendmajor}*
 
-%files -n %{ebook_libname}
+%files -n %{libebook}
 %{_libdir}/libebook-%{api}.so.%{ebookmajor}*
 
-%files -n %{ecal_libname}
+%files -n %{libecal}
 %{_libdir}/libecal-%{api}.so.%{ecalmajor}*
 
-%files -n %{edatabook_libname}
+%files -n %{libedatabook}
 %{_libdir}/libedata-book-%{api}.so.%{edatabookmajor}*
 
-%files -n %{edatacal_libname}
+%files -n %{libedatacal}
 %{_libdir}/libedata-cal-%{api}.so.%{edatacalmajor}*
 
-%files -n %{edataserver_libname}
+%files -n %{libedataserver}
 %{_libdir}/libedataserver-%{api}.so.%{edataservermajor}*
 
-%files -n %{edataserverui_libname}
-%{_libdir}/libedataserverui-%{base_version}.so.%{edataserveruimajor}*
+%files -n %{libedataserverui}
+%{_libdir}/libedataserverui-%{uiapi}.so.%{edataserveruimajor}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/EDataServer-%{girmajor}.typelib
-%{_libdir}/girepository-1.0/ECalendar-%{girmajor}.typelib
-%{_libdir}/girepository-1.0/EBook-%{girmajor}.typelib
+%{_libdir}/girepository-1.0/EDataServer-%{api}.typelib
 
-%files -n %{camel_devel}
+%files -n %{girecalendar}
+%{_libdir}/girepository-1.0/ECalendar-%{api}.typelib
+
+%files -n %{girebook}
+%{_libdir}/girepository-1.0/EBook-%{api}.typelib
+
+%files -n %{devcamel}
 %doc %{_datadir}/gtk-doc/html/camel/*
-%{_includedir}/%{name}-%{dir_version}/camel
+%{_includedir}/%{name}-%{url_ver}/camel
 %{_libdir}/pkgconfig/camel-%{api}.pc
-##{_libdir}/pkgconfig/camel-provider-%{api}.pc
 %{_libdir}/libcamel-%{api}.so
-##{_libdir}/libcamel-provider-%{api}.so
 
-%files -n %{ebackend_devel}
+%files -n %{devebackend}
 %doc %{_datadir}/gtk-doc/html/libebackend/*
-%{_includedir}/%{name}-%{dir_version}/libebackend
+%{_includedir}/%{name}-%{url_ver}/libebackend
 %{_libdir}/pkgconfig/libebackend-%{api}.pc
 %{_libdir}/libebackend-%{api}.so
 
-%files -n %{ebook_devel}
+%files -n %{devebook}
 %doc %{_datadir}/gtk-doc/html/libebook/*
-%{_includedir}/%{name}-%{dir_version}/libebook/
+%{_includedir}/%{name}-%{url_ver}/libebook/
 %{_libdir}/pkgconfig/libebook-%{api}.pc
 %{_libdir}/libebook-%{api}.so
 
-%files -n %{ecal_devel}
+%files -n %{devecal}
 %doc %{_datadir}/gtk-doc/html/libecal/*
-%{_includedir}/%{name}-%{dir_version}/libecal/
+%{_includedir}/%{name}-%{url_ver}/libecal/
 %{_libdir}/pkgconfig/libecal-%{api}.pc
 %{_libdir}/libecal-%{api}.so
-%{_datadir}/gir-1.0/ECalendar-%{girmajor}.gir
+%{_datadir}/gir-1.0/ECalendar-%{api}.gir
 
-%files -n %{edatabook_devel}
+%files -n %{devedatabook}
 %doc %{_datadir}/gtk-doc/html/libedata-book/*
-%{_includedir}/%{name}-%{dir_version}/libedata-book/
+%{_includedir}/%{name}-%{url_ver}/libedata-book/
 %{_libdir}/pkgconfig/libedata-book-%{api}.pc
 %{_libdir}/libedata-book-%{api}.so
-%{_datadir}/gir-1.0/EBook-%{girmajor}.gir
+%{_datadir}/gir-1.0/EBook-%{api}.gir
 
-%files -n %{edatacal_devel}
+%files -n %{devedatacal}
 %doc %{_datadir}/gtk-doc/html/libedata-cal/*
-%{_includedir}/%{name}-%{dir_version}/libedata-cal/
+%{_includedir}/%{name}-%{url_ver}/libedata-cal/
 %{_libdir}/pkgconfig/libedata-cal-%{api}.pc
 %{_libdir}/libedata-cal-%{api}.so
 
-%files -n %{edataserver_devel}
+%files -n %{devedataserver}
 %doc %{_datadir}/gtk-doc/html/libedataserver/*
-%{_includedir}/%{name}-%{dir_version}/libedataserver/
+%{_includedir}/%{name}-%{url_ver}/libedataserver/
 %{_libdir}/pkgconfig/libedataserver-%{api}.pc
 %{_libdir}/pkgconfig/evolution-data-server-%{api}.pc
 %{_libdir}/libedataserver-%{api}.so
-%{_datadir}/gir-1.0/EDataServer-%{girmajor}.gir
+%{_datadir}/gir-1.0/EDataServer-%{api}.gir
 
-%files -n %{edataserverui_devel}
+%files -n %{devedataserverui}
 %doc %{_datadir}/gtk-doc/html/libedataserverui/*
-%{_includedir}/%{name}-%{dir_version}/libedataserverui/
-%{_libdir}/pkgconfig/libedataserverui-%{base_version}.pc
-%{_libdir}/libedataserverui-%{base_version}.so
+%{_includedir}/%{name}-%{url_ver}/libedataserverui/
+%{_libdir}/pkgconfig/libedataserverui-%{uiapi}.pc
+%{_libdir}/libedataserverui-%{uiapi}.so
 
