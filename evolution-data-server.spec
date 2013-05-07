@@ -73,6 +73,7 @@ BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
+BuildRequires:	pkgconfig(libaccounts-glib)
 
 %description
 Evolution Data Server provides a central location for your addressbook
