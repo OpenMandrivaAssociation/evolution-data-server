@@ -53,6 +53,7 @@ BuildRequires:	intltool
 BuildRequires:	openldap-devel
 BuildRequires:	krb5-devel
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
+BuildRequires:	pkgconfig(libsecret-unstable)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gconf-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
