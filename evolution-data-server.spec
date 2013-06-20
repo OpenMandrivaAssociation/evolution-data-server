@@ -41,7 +41,7 @@
 
 Summary:	Evolution Data Server
 Name:		evolution-data-server
-Version:	3.8.1
+Version:	3.8.3
 Release:	1
 License: 	LGPLv2+
 Group:		System/Libraries
@@ -74,6 +74,7 @@ BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(libaccounts-glib)
+BuildRequires:	pkgconfig(json-glib-1.0)
 
 %description
 Evolution Data Server provides a central location for your addressbook
