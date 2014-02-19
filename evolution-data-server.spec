@@ -436,6 +436,11 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/pkgconfig/libedataserver-%{api}.pc
 %{_libdir}/pkgconfig/evolution-data-server-%{api}.pc
 %{_libdir}/libedataserver-%{api}.so
+%{_libdir}/%{name}/addressbook-backends/*.so
+%{_libdir}/%{name}/calendar-backends/*.so
+%{_libdir}/%{name}/camel-providers/*.so
+%{_libdir}/%{name}/camel-providers/*.urls
+%{_libdir}/%{name}/registry-modules/*.so
 %{_datadir}/gir-1.0/EDataServer-%{api}.gir
 
 #files -n %{devedataserverui}
