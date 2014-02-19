@@ -439,7 +439,7 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/%{name}/addressbook-backends/*.so
 %{_libdir}/%{name}/calendar-backends/*.so
 %{_libdir}/%{name}/camel-providers/*.so
-%{_libdir}/%{name}/camel-providers/*.url
+%{_libdir}/%{name}/camel-providers/*.urls
 %{_libdir}/%{name}/registry-modules/*.so
 %{_datadir}/gir-1.0/EDataServer-%{api}.gir
 
