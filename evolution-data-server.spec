@@ -313,7 +313,7 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 
 %files -f %{name}-%{url_ver}.lang
 %doc COPYING NEWS
-%{_libexecdir}/%{name}
+#%{_libexecdir}/%{name}
 %{_libexecdir}/camel-index-control-%{api}
 %{_libexecdir}/evolution-addressbook-factory
 %{_libexecdir}/evolution-calendar-factory
