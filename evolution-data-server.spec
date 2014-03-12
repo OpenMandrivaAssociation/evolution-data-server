@@ -313,12 +313,12 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 
 %files -f %{name}-%{url_ver}.lang
 %doc COPYING NEWS
-%{_libexecdir}/%{name}
 %{_libexecdir}/camel-index-control-%{api}
 %{_libexecdir}/evolution-addressbook-factory
 %{_libexecdir}/evolution-calendar-factory
 %{_libexecdir}/evolution-source-registry
 %{_libexecdir}/evolution-user-prompter
+%{_libexecdir}/evolution-scan-gconf-tree-xml
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api}
 %{_datadir}/accounts/applications/evolution-data-server.application
@@ -330,6 +330,8 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/accounts/services/google-gmail.service
 %{_datadir}/accounts/services/yahoo-calendar.service
 %{_datadir}/accounts/services/yahoo-mail.service
+%{_datadir}/accounts/services/windows-live-mail.service
+%{_datadir}/applications/evolution-data-server-uoa.desktop
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
