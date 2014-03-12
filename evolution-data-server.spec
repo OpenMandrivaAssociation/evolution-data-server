@@ -3,11 +3,11 @@
 %define api	1.2
 %define uiapi	3.0
 
-%define camelmajor 43
+%define camelmajor 45
 %define libcamel %mklibname camel %{api} %{camelmajor}
 %define devcamel %mklibname camel -d
 
-%define ebackendmajor 6
+%define ebackendmajor 7
 %define libebackend %mklibname ebackend %{api} %{ebackendmajor}
 %define devebackend %mklibname ebackend -d
 
@@ -19,19 +19,19 @@
 %define libebookcontacts %mklibname ebook-contacts %{api} %{ebookcontactsmajor}
 %define devebookcontacts %mklibname ebook-contacts -d
 
-%define ecalmajor 15
+%define ecalmajor 16
 %define libecal %mklibname ecal %{api} %{ecalmajor}
 %define devecal %mklibname ecal -d
 
-%define edatabookmajor 17
+%define edatabookmajor 20
 %define libedatabook %mklibname edata-book %{api} %{edatabookmajor}
 %define devedatabook %mklibname edata-book -d
 
-%define edatacalmajor 20
+%define edatacalmajor 23
 %define libedatacal %mklibname edata-cal %{api} %{edatacalmajor}
 %define devedatacal %mklibname edata-cal -d
 
-%define edataservermajor 17
+%define edataservermajor 18
 %define libedataserver %mklibname edataserver %{api} %{edataservermajor}
 %define devedataserver %mklibname -d edataserver
 
@@ -46,8 +46,8 @@
 
 Summary:	Evolution Data Server
 Name:		evolution-data-server
-Version:	3.8.3
-Release:	2
+Version:	3.10.4
+Release:	1
 License: 	LGPLv2+
 Group:		System/Libraries
 Url: 		http://www.gnome.org/projects/evolution/
@@ -313,12 +313,16 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 
 %files -f %{name}-%{url_ver}.lang
 %doc COPYING NEWS
+<<<<<<< HEAD
 #%{_libexecdir}/%{name}
+=======
+>>>>>>> master
 %{_libexecdir}/camel-index-control-%{api}
 %{_libexecdir}/evolution-addressbook-factory
 %{_libexecdir}/evolution-calendar-factory
 %{_libexecdir}/evolution-source-registry
 %{_libexecdir}/evolution-user-prompter
+%{_libexecdir}/evolution-scan-gconf-tree-xml
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api}
 %{_datadir}/accounts/applications/evolution-data-server.application
@@ -330,6 +334,8 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/accounts/services/google-gmail.service
 %{_datadir}/accounts/services/yahoo-calendar.service
 %{_datadir}/accounts/services/yahoo-mail.service
+%{_datadir}/accounts/services/windows-live-mail.service
+%{_datadir}/applications/evolution-data-server-uoa.desktop
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
