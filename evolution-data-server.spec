@@ -3,11 +3,11 @@
 %define api	1.2
 %define uiapi	3.0
 
-%define camelmajor 43
+%define camelmajor 45
 %define libcamel %mklibname camel %{api} %{camelmajor}
 %define devcamel %mklibname camel -d
 
-%define ebackendmajor 6
+%define ebackendmajor 7
 %define libebackend %mklibname ebackend %{api} %{ebackendmajor}
 %define devebackend %mklibname ebackend -d
 
@@ -19,19 +19,19 @@
 %define libebookcontacts %mklibname ebook-contacts %{api} %{ebookcontactsmajor}
 %define devebookcontacts %mklibname ebook-contacts -d
 
-%define ecalmajor 15
+%define ecalmajor 16
 %define libecal %mklibname ecal %{api} %{ecalmajor}
 %define devecal %mklibname ecal -d
 
-%define edatabookmajor 17
+%define edatabookmajor 20
 %define libedatabook %mklibname edata-book %{api} %{edatabookmajor}
 %define devedatabook %mklibname edata-book -d
 
-%define edatacalmajor 20
+%define edatacalmajor 23
 %define libedatacal %mklibname edata-cal %{api} %{edatacalmajor}
 %define devedatacal %mklibname edata-cal -d
 
-%define edataservermajor 17
+%define edataservermajor 18
 %define libedataserver %mklibname edataserver %{api} %{edataservermajor}
 %define devedataserver %mklibname -d edataserver
 
@@ -46,8 +46,8 @@
 
 Summary:	Evolution Data Server
 Name:		evolution-data-server
-Version:	3.8.3
-Release:	5
+Version:	3.10.4
+Release:	1
 License: 	LGPLv2+
 Group:		System/Libraries
 Url: 		http://www.gnome.org/projects/evolution/
