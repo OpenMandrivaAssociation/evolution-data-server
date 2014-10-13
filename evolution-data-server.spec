@@ -68,6 +68,7 @@ BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(libical) >= 0.43
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
 BuildRequires:	pkgconfig(gcr-base-3)
+BuildRequires:	pkgconfig(libsecret-unstable)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
 
@@ -198,7 +199,7 @@ GObject Introspection interface description for %name.
 
 %build
 autoreconf -vfi
-%configure2_5x \
+%configure \
 	--with-krb5=%{_prefix} \
 	--with-krb5-libs=%{_libdir} \
 	--with-libdb=%{_prefix} \
