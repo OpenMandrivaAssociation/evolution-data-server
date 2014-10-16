@@ -54,7 +54,6 @@ BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(krb5)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
-BuildRequires:	pkgconfig(gconf-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
