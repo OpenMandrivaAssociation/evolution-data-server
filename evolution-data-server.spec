@@ -2,29 +2,32 @@
 %define ui_api_version 3.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 51
+%define camelmajor 52
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 15
+%define ebookmajor 16
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 17
+%define ecalmajor 18
 %define ecal_libname %mklibname ecal %{api_version} %{ecalmajor}
 
-%define edatabookmajor 24
+%define edatabookmajor 25
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 0
+%define ebook_contactsmajor 1
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 26
+%define edatacalmajor 27
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 19
+%define edataservermajor 20
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
-%define ebackendmajor 9
+%define edataserveruimajor 1
+%define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
+
+%define ebackendmajor 10
 %define ebackend_libname %mklibname ebackend %{api_version} %{ebackendmajor}
 
 %define gi_major 1.2
@@ -34,17 +37,15 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.13.6
-Release:	5
+Version:	3.16.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		http://www.gnome.org/projects/evolution/
-Patch0:		evolution-data-server-3.13.6-correct-compiler-flags-for-libedataserver-private_la.patch
-Patch1:		evolution-data-server-3.13.6-add-libedbus-private_la-into-LIBADD-where-needed.patch
 Patch2:		evolution-data-server-3.13.6-build-libedbus-private_la-as-a-shared-library.patch
 BuildRequires:	bison
-BuildRequires:	db5-devel
+BuildRequires:	db6-devel
 BuildRequires:	gettext
 BuildRequires:	gnome-common
 BuildRequires:	gperf
@@ -151,6 +152,15 @@ Requires:	gsettings-desktop-schemas
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
+%package -n %{edataserverui_libname}
+Summary:	Shared libraries for using Evolution Data Server
+Group:		System/Libraries
+Requires:	%{name} >= %{version}-%{release}
+
+%description -n %{edataserverui_libname}
+Evolution Data Server provides a central location for your addressbook
+and calendar in the gnome desktop.
+
 %package -n %{ebackend_libname}
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
@@ -172,6 +182,7 @@ Requires: %ecal_libname = %version
 Requires: %edatabook_libname = %version
 Requires: %edatacal_libname = %version
 Requires: %edataserver_libname = %version
+Requires: %edataserverui_libname = %version
 Requires: %ebackend_libname = %version
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
@@ -192,8 +203,6 @@ GObject Introspection interface description for %name.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 %patch2 -p1 -R
 
 %build
@@ -262,6 +271,9 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 
 %files -n %{edataserver_libname}
 %{_libdir}/libedataserver-%{api_version}.so.%{edataservermajor}*
+
+%files -n %{edataserverui_libname}
+%{_libdir}/libedataserverui-%{api_version}.so.%{edataserveruimajor}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/EDataServer-%{gi_major}.typelib
