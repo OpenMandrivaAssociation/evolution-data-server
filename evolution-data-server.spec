@@ -47,7 +47,7 @@
 Summary:	Evolution Data Server
 Name:		evolution-data-server
 Version:	3.10.4
-Release:	1.1
+Release:	1.2
 License: 	LGPLv2+
 Group:		System/Libraries
 Url: 		http://www.gnome.org/projects/evolution/
@@ -340,6 +340,8 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/pixmaps/%{name}
 %{_datadir}/GConf/gsettings/evolution-data-server.convert
 
+%{_libdir}/%{name}
+
 #GSettings
 %{_datadir}/GConf/gsettings/libedataserver.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.eds-shell.gschema.xml
@@ -438,11 +440,6 @@ find %{buildroot} -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/pkgconfig/libedataserver-%{api}.pc
 %{_libdir}/pkgconfig/evolution-data-server-%{api}.pc
 %{_libdir}/libedataserver-%{api}.so
-%{_libdir}/%{name}/addressbook-backends/*.so
-%{_libdir}/%{name}/calendar-backends/*.so
-%{_libdir}/%{name}/camel-providers/*.so
-%{_libdir}/%{name}/camel-providers/*.urls
-%{_libdir}/%{name}/registry-modules/*.so
 %{_datadir}/gir-1.0/EDataServer-%{api}.gir
 
 
