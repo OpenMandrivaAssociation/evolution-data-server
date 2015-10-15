@@ -2,22 +2,22 @@
 %define ui_api_version 3.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 52
+%define camelmajor 54
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
 %define ebookmajor 16
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 18
+%define ecalmajor 19
 %define ecal_libname %mklibname ecal %{api_version} %{ecalmajor}
 
 %define edatabookmajor 25
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 1
+%define ebook_contactsmajor 2
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 27
+%define edatacalmajor 28
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
 %define edataservermajor 20
@@ -37,8 +37,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.16.1
-Release:	3
+Version:	3.18.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
