@@ -37,7 +37,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.18.1
+Version:	3.18.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -225,7 +225,7 @@ autoreconf -vfi
 # remove libtool archives for importers and the like
 find $RPM_BUILD_ROOT/%{_libdir} -name '*.la' -delete
 
-# give the libraries some executable bits 
+# give the libraries some executable bits
 find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 
 %find_lang %{name}-%{dir_version}
