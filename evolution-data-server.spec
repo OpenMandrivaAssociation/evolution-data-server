@@ -2,7 +2,7 @@
 %define ui_api_version 3.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 54
+%define camelmajor 59
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
 %define ebookmajor 16
@@ -20,7 +20,7 @@
 %define edatacalmajor 28
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 21
+%define edataservermajor 22
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
@@ -35,15 +35,16 @@
 
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
+%define _disable_rebuild_configure 1
+
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.18.5
+Version:	3.22.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		http://www.gnome.org/projects/evolution/
-Patch2:		evolution-data-server-3.13.6-build-libedbus-private_la-as-a-shared-library.patch
 BuildRequires:	bison
 BuildRequires:	db6-devel
 BuildRequires:	gettext
@@ -203,10 +204,8 @@ GObject Introspection interface description for %name.
 
 %prep
 %setup -q
-%patch2 -p1 -R
 
 %build
-autoreconf -vfi
 %configure \
 	--with-krb5=%{_prefix} \
 	--with-krb5-libs=%{_libdir} \
@@ -233,6 +232,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %files -f %{name}-%{dir_version}.lang
 %doc COPYING NEWS
 %{_libdir}/%{name}/
+%{_libexecdir}/camel-gpg-photo-saver
 %{_libexecdir}/camel-index-control-%{api_version}
 %{_libexecdir}/evolution-addressbook-factory
 %{_libexecdir}/evolution-calendar-factory
@@ -241,6 +241,9 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libexecdir}/evolution-source-registry
 %{_libexecdir}/evolution-user-prompter
 %{_libexecdir}/evolution-scan-gconf-tree-xml
+%{_libexecdir}/evolution-data-server
+%{_prefix}/lib/systemd/user
+
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
 %{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
@@ -288,9 +291,12 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
+%{_datadir}/gir-1.0/Camel-%{gi_major}.gir
 %{_datadir}/gir-1.0/EDataServer-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBook-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBookContacts-%{gi_major}.gir
+%{_datadir}/vala/vapi/camel-1.2.deps
+%{_datadir}/vala/vapi/camel-1.2.vapi
 %{_datadir}/vala/vapi/libebook-1.2.deps
 %{_datadir}/vala/vapi/libebook-1.2.vapi
 %{_datadir}/vala/vapi/libebook-contacts-1.2.deps
