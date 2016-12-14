@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   evolution-data-server-3.18.5.tar.xz: 3b4870efce38c83a77f9141c8b1dbebb6543c661
+sources:
+  evolution-data-server-3.22.3.tar.xz: 7accf35f1ababb9537554b1b09fc3cc8f2788f4e
