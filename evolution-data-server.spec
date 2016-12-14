@@ -36,11 +36,12 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define _disable_rebuild_configure 1
+%define __noautoreq '^devel\\(libedbus-private'
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.22.3
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
