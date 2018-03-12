@@ -2,10 +2,10 @@
 %define ui_api_version 3.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 59
+%define camelmajor 61
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 16
+%define ebookmajor 19
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
 %define ecalmajor 19
@@ -20,11 +20,11 @@
 %define edatacalmajor 28
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 22
+%define edataservermajor 23
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
-%define edataserveruimajor 1
+%define edataserveruimajor 2
 %define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
 
 %define ebackendmajor 10
@@ -40,8 +40,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.22.3
-Release:	2
+Version:	3.28.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -67,10 +67,12 @@ BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(gweather-3.0) >= 2.90.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
-BuildRequires:	pkgconfig(libical) >= 0.43
+BuildRequires:	pkgconfig(libical) >= 2.0
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
 BuildRequires:	pkgconfig(gcr-base-3)
 BuildRequires:	pkgconfig(libsecret-unstable)
+BuildRequires:	pkgconfig(libaccounts-glib)
+BuildRequires:	pkgconfig(libsignon-glib)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
 
@@ -207,20 +209,21 @@ GObject Introspection interface description for %name.
 %setup -q
 
 %build
-%configure \
-	--with-krb5=%{_prefix} \
-	--with-krb5-libs=%{_libdir} \
-	--with-libdb=%{_prefix} \
-	--with-openldap=yes \
-	--with-static-ldap=no \
-	--disable-static \
-	--enable-gtk-doc=yes \
-	--disable-uoa \
-	--enable-vala-bindings
+#configure \
+#--with-krb5=%{_prefix} \
+#--with-krb5-libs=%{_libdir} \
+#--with-libdb=%{_prefix} \
+#--with-openldap=yes \
+#--with-static-ldap=no \
+#--disable-static \
+#--enable-gtk-doc=yes \
+#--disable-uoa \
+#--enable-vala-bindings
+%cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF
 %make
 
 %install
-%makeinstall_std
+%makeinstall_std -C build
 
 # remove libtool archives for importers and the like
 find $RPM_BUILD_ROOT/%{_libdir} -name '*.la' -delete
@@ -228,9 +231,9 @@ find $RPM_BUILD_ROOT/%{_libdir} -name '*.la' -delete
 # give the libraries some executable bits
 find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 
-%find_lang %{name}-%{dir_version}
+%find_lang %{name}
 
-%files -f %{name}-%{dir_version}.lang
+%files -f %{name}.lang
 %doc COPYING NEWS
 %{_libdir}/%{name}/
 %{_libexecdir}/camel-gpg-photo-saver
@@ -280,7 +283,9 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libedataserverui-%{api_version}.so.%{edataserveruimajor}*
 
 %files -n %{girname}
+%{_libdir}/girepository-1.0/Camel-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EDataServer-%{gi_major}.typelib
+%{_libdir}/girepository-1.0/EDataServerUI-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBook-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBookContacts-%{gi_major}.typelib
 
@@ -288,12 +293,12 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
 
 %files -n %{edataserver_libnamedev}
-%doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Camel-%{gi_major}.gir
 %{_datadir}/gir-1.0/EDataServer-%{gi_major}.gir
+%{_datadir}/gir-1.0/EDataServerUI-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBook-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBookContacts-%{gi_major}.gir
 %{_datadir}/vala/vapi/camel-1.2.deps
@@ -304,3 +309,5 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/vala/vapi/libebook-contacts-1.2.vapi
 %{_datadir}/vala/vapi/libedataserver-1.2.deps
 %{_datadir}/vala/vapi/libedataserver-1.2.vapi
+%{_datadir}/vala/vapi/libedataserverui-1.2.deps
+%{_datadir}/vala/vapi/libedataserverui-1.2.vapi
