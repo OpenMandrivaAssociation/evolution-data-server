@@ -47,6 +47,7 @@ Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		http://www.gnome.org/projects/evolution/
 BuildRequires:	bison
+BuildRequires:	cmake
 BuildRequires:	db6-devel
 BuildRequires:	gettext
 BuildRequires:	gnome-common
