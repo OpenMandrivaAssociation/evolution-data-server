@@ -63,7 +63,6 @@ BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
 BuildRequires:	pkgconfig(goa-1.0) >= 3.1.1
-BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.20.1
 BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(gweather-3.0) >= 2.90.0
@@ -220,7 +219,9 @@ GObject Introspection interface description for %name.
 #--enable-gtk-doc=yes \
 #--disable-uoa \
 #--enable-vala-bindings
-%cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF
+%cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
+	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
+	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
 %make
 
 %install
