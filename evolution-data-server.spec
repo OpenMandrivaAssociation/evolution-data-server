@@ -37,11 +37,13 @@
 
 %define _disable_rebuild_configure 1
 %define __noautoreq '^devel\\(libedbus-private'
+# allow private lib path to remain
+%define _cmake_skip_rpath %nil
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.28.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -209,16 +211,6 @@ GObject Introspection interface description for %name.
 %setup -q
 
 %build
-#configure \
-#--with-krb5=%{_prefix} \
-#--with-krb5-libs=%{_libdir} \
-#--with-libdb=%{_prefix} \
-#--with-openldap=yes \
-#--with-static-ldap=no \
-#--disable-static \
-#--enable-gtk-doc=yes \
-#--disable-uoa \
-#--enable-vala-bindings
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
