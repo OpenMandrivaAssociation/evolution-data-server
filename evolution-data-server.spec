@@ -77,6 +77,7 @@ BuildRequires:	pkgconfig(libaccounts-glib)
 BuildRequires:	pkgconfig(libsignon-glib)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
+BuildRequires:	pkgconfig(webkit2gtk-4.0)
 
 %description
 Evolution Data Server provides a central location for your addressbook
