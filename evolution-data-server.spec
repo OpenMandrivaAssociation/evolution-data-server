@@ -42,8 +42,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.28.0
-Release:	3
+Version:	3.28.5
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -77,6 +77,8 @@ BuildRequires:	pkgconfig(libaccounts-glib)
 BuildRequires:	pkgconfig(libsignon-glib)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
+BuildRequires:	pkgconfig(webkit2gtk-4.0)
+BuildRequires:	pkgconfig(ss)
 
 %description
 Evolution Data Server provides a central location for your addressbook
