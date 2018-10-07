@@ -2,7 +2,7 @@
 %define ui_api_version 3.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 61
+%define camelmajor 62
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
 %define ebookmajor 19
@@ -17,7 +17,7 @@
 %define ebook_contactsmajor 2
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 28
+%define edatacalmajor 29
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
 %define edataservermajor 23
@@ -42,7 +42,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.28.5
+Version:	3.30.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -75,6 +75,7 @@ BuildRequires:	pkgconfig(gcr-base-3)
 BuildRequires:	pkgconfig(libsecret-unstable)
 BuildRequires:	pkgconfig(libaccounts-glib)
 BuildRequires:	pkgconfig(libsignon-glib)
+BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
 BuildRequires:	pkgconfig(webkit2gtk-4.0)
@@ -243,6 +244,8 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libexecdir}/evolution-scan-gconf-tree-xml
 %{_libexecdir}/evolution-data-server
 %{_prefix}/lib/systemd/user
+%{_sysconfdir}/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
+%{_datadir}/applications/org.gnome.Evolution-alarm-notify.desktop
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
