@@ -244,6 +244,8 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libexecdir}/evolution-scan-gconf-tree-xml
 %{_libexecdir}/evolution-data-server
 %{_prefix}/lib/systemd/user
+%{_sysconfdir}/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
+%{_datadir}/applications/org.gnome.Evolution-alarm-notify.desktop
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
