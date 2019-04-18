@@ -20,7 +20,7 @@
 %define edatacalmajor 29
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 23
+%define edataservermajor 24
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
@@ -42,7 +42,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.30.5
+Version:	3.32.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -50,7 +50,7 @@ Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version
 URL:		http://www.gnome.org/projects/evolution/
 BuildRequires:	bison
 BuildRequires:	cmake
-BuildRequires:	db6-devel
+BuildRequires:	db60-devel
 BuildRequires:	gettext
 BuildRequires:	gnome-common
 BuildRequires:	gperf
