@@ -42,7 +42,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.30.5
+Version:	3.32.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
