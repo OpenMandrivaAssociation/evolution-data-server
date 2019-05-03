@@ -50,7 +50,7 @@ Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version
 URL:		http://www.gnome.org/projects/evolution/
 BuildRequires:	bison
 BuildRequires:	cmake
-BuildRequires:	db60-devel
+BuildRequires:	db-devel
 BuildRequires:	gettext
 BuildRequires:	gnome-common
 BuildRequires:	gperf
