@@ -42,7 +42,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.32.2
+Version:	3.32.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -217,10 +217,10 @@ GObject Introspection interface description for %name.
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 # remove libtool archives for importers and the like
 find $RPM_BUILD_ROOT/%{_libdir} -name '*.la' -delete
