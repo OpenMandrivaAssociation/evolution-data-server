@@ -61,6 +61,7 @@ BuildRequires:	pkgconfig(krb5)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
+BuildRequires:	pkgconfig(libical-glib)
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
