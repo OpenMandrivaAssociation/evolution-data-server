@@ -1,23 +1,25 @@
 %define api_version 1.2
 %define ui_api_version 3.0
+%define ecal_api 2.0
+%define edata_api 2.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
 %define camelmajor 62
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 19
+%define ebookmajor 20
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 19
-%define ecal_libname %mklibname ecal %{api_version} %{ecalmajor}
+%define ecalmajor 1
+%define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
 
-%define edatabookmajor 25
+%define edatabookmajor 26
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 2
+%define ebook_contactsmajor 3
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 29
+%define edatacalmajor 1
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
 %define edataservermajor 24
@@ -42,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.32.4
+Version:	3.34.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -61,6 +63,7 @@ BuildRequires:	pkgconfig(krb5)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
+BuildRequires:	pkgconfig(libical-glib)
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
@@ -214,6 +217,8 @@ GObject Introspection interface description for %name.
 %setup -q
 
 %build
+#export CC=gcc
+#export CXX=g++
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
@@ -264,7 +269,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libebook-%{api_version}.so.%{ebookmajor}*
 
 %files -n %{ecal_libname}
-%{_libdir}/libecal-%{api_version}.so.%{ecalmajor}*
+%{_libdir}/libecal-%{ecal_api}.so.%{ecalmajor}*
 
 %files -n %{ebook_contacts_libname}
 %{_libdir}/libebook-contacts-%{api_version}.so.%{ebook_contactsmajor}*
@@ -273,7 +278,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libedata-book-%{api_version}.so.%{edatabookmajor}*
 
 %files -n %{edatacal_libname}
-%{_libdir}/libedata-cal-%{api_version}.so.%{edatacalmajor}*
+%{_libdir}/libedata-cal-%{edata_api}.so.%{edatacalmajor}*
 
 %files -n %{edataserver_libname}
 %{_libdir}/libedataserver-%{api_version}.so.%{edataservermajor}*
@@ -287,6 +292,10 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/girepository-1.0/EDataServerUI-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBook-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBookContacts-%{gi_major}.typelib
+%{_libdir}/girepository-1.0/EBackend-1.2.typelib
+%{_libdir}/girepository-1.0/ECal-2.0.typelib
+%{_libdir}/girepository-1.0/EDataBook-1.2.typelib
+%{_libdir}/girepository-1.0/EDataCal-2.0.typelib
 
 %files -n %{ebackend_libname}
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
@@ -296,16 +305,28 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Camel-%{gi_major}.gir
+%{_datadir}/gir-1.0/EBackend-1.2.gir
 %{_datadir}/gir-1.0/EDataServer-%{gi_major}.gir
 %{_datadir}/gir-1.0/EDataServerUI-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBook-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBookContacts-%{gi_major}.gir
+%{_datadir}/gir-1.0/ECal-2.0.gir
+%{_datadir}/gir-1.0/EDataBook-1.2.gir
+%{_datadir}/gir-1.0/EDataCal-2.0.gir
 %{_datadir}/vala/vapi/camel-1.2.deps
 %{_datadir}/vala/vapi/camel-1.2.vapi
+%{_datadir}/vala/vapi/libebackend-%{gi_major}.deps
+%{_datadir}/vala/vapi/libebackend-%{gi_major}.vapi
 %{_datadir}/vala/vapi/libebook-1.2.deps
 %{_datadir}/vala/vapi/libebook-1.2.vapi
 %{_datadir}/vala/vapi/libebook-contacts-1.2.deps
 %{_datadir}/vala/vapi/libebook-contacts-1.2.vapi
+%{_datadir}/vala/vapi/libecal-2.0.deps
+%{_datadir}/vala/vapi/libecal-2.0.vapi
+%{_datadir}/vala/vapi/libedata-book-%{gi_major}.deps
+%{_datadir}/vala/vapi/libedata-book-%{gi_major}.vapi
+%{_datadir}/vala/vapi/libedata-cal-2.0.deps
+%{_datadir}/vala/vapi/libedata-cal-2.0.vapi
 %{_datadir}/vala/vapi/libedataserver-1.2.deps
 %{_datadir}/vala/vapi/libedataserver-1.2.vapi
 %{_datadir}/vala/vapi/libedataserverui-1.2.deps
