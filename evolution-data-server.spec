@@ -215,8 +215,8 @@ GObject Introspection interface description for %name.
 %setup -q
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
