@@ -1,5 +1,7 @@
 %define api_version 1.2
 %define ui_api_version 3.0
+%define ecal_api 2.0
+%define edata_api 2.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
 %define camelmajor 62
@@ -8,8 +10,8 @@
 %define ebookmajor 20
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 19
-%define ecal_libname %mklibname ecal %{api_version} %{ecalmajor}
+%define ecalmajor 1
+%define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
 
 %define edatabookmajor 26
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
@@ -17,7 +19,7 @@
 %define ebook_contactsmajor 3
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 29
+%define edatacalmajor 1
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
 %define edataservermajor 24
@@ -267,7 +269,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libebook-%{api_version}.so.%{ebookmajor}*
 
 %files -n %{ecal_libname}
-%{_libdir}/libecal-%{api_version}.so.%{ecalmajor}*
+%{_libdir}/libecal-%{ecal_api}.so.%{ecalmajor}*
 
 %files -n %{ebook_contacts_libname}
 %{_libdir}/libebook-contacts-%{api_version}.so.%{ebook_contactsmajor}*
@@ -276,7 +278,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/libedata-book-%{api_version}.so.%{edatabookmajor}*
 
 %files -n %{edatacal_libname}
-%{_libdir}/libedata-cal-%{api_version}.so.%{edatacalmajor}*
+%{_libdir}/libedata-cal-%{edata_api}.so.%{edatacalmajor}*
 
 %files -n %{edataserver_libname}
 %{_libdir}/libedataserver-%{api_version}.so.%{edataservermajor}*
