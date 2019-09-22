@@ -292,6 +292,10 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/girepository-1.0/EDataServerUI-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBook-%{gi_major}.typelib
 %{_libdir}/girepository-1.0/EBookContacts-%{gi_major}.typelib
+%{_libdir}/girepository-1.0/EBackend-1.2.typelib
+%{_libdir}/girepository-1.0/ECal-2.0.typelib
+%{_libdir}/girepository-1.0/EDataBook-1.2.typelib
+%{_libdir}/girepository-1.0/EDataCal-2.0.typelib
 
 %files -n %{ebackend_libname}
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
@@ -301,16 +305,28 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Camel-%{gi_major}.gir
+%{_datadir}/gir-1.0/EBackend-1.2.gir
 %{_datadir}/gir-1.0/EDataServer-%{gi_major}.gir
 %{_datadir}/gir-1.0/EDataServerUI-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBook-%{gi_major}.gir
 %{_datadir}/gir-1.0/EBookContacts-%{gi_major}.gir
+%{_datadir}/gir-1.0/ECal-2.0.gir
+%{_datadir}/gir-1.0/EDataBook-1.2.gir
+%{_datadir}/gir-1.0/EDataCal-2.0.gir
 %{_datadir}/vala/vapi/camel-1.2.deps
 %{_datadir}/vala/vapi/camel-1.2.vapi
+%{_datadir}/vala/vapi/libebackend-%{gi_major}.deps
+%{_datadir}/vala/vapi/libebackend-%{gi_major}.vapi
 %{_datadir}/vala/vapi/libebook-1.2.deps
 %{_datadir}/vala/vapi/libebook-1.2.vapi
 %{_datadir}/vala/vapi/libebook-contacts-1.2.deps
 %{_datadir}/vala/vapi/libebook-contacts-1.2.vapi
+%{_datadir}/vala/vapi/libecal-2.0.deps
+%{_datadir}/vala/vapi/libecal-2.0.vapi
+%{_datadir}/vala/vapi/libedata-book-%{gi_major}.deps
+%{_datadir}/vala/vapi/libedata-book-%{gi_major}.vapi
+%{_datadir}/vala/vapi/libedata-cal-2.0.deps
+%{_datadir}/vala/vapi/libedata-cal-2.0.vapi
 %{_datadir}/vala/vapi/libedataserver-1.2.deps
 %{_datadir}/vala/vapi/libedataserver-1.2.vapi
 %{_datadir}/vala/vapi/libedataserverui-1.2.deps
