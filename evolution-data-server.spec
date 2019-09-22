@@ -5,16 +5,16 @@
 %define camelmajor 62
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 19
+%define ebookmajor 20
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
 %define ecalmajor 19
 %define ecal_libname %mklibname ecal %{api_version} %{ecalmajor}
 
-%define edatabookmajor 25
+%define edatabookmajor 26
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 2
+%define ebook_contactsmajor 3
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
 %define edatacalmajor 29
