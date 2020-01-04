@@ -44,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.34.2
+Version:	3.34.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -217,8 +217,6 @@ GObject Introspection interface description for %name.
 %setup -q
 
 %build
-#export CC=gcc
-#export CXX=g++
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
