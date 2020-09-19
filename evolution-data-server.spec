@@ -22,7 +22,7 @@
 %define edatacalmajor 1
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 24
+%define edataservermajor 25
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
@@ -44,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.36.5
+Version:	3.38.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -252,10 +252,10 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.UserPrompter.service
+%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook*.service
+%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar*.service
+%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources*.service
+%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.UserPrompter*.service
 %{_datadir}/GConf/gsettings/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/pixmaps/%{name}
