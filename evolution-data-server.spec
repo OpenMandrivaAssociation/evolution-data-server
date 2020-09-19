@@ -252,10 +252,10 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
-%{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.UserPrompter.service
+#{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.AddressBook.service
+#{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Calendar.service
+#{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.Sources.service
+#{_datadir}/dbus-1/services/org.gnome.evolution.dataserver.UserPrompter.service
 %{_datadir}/GConf/gsettings/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/pixmaps/%{name}
