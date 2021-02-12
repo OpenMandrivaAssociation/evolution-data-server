@@ -44,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.38.3
+Version:	3.38.4
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
