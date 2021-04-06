@@ -22,11 +22,11 @@
 %define edatacalmajor 1
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 25
+%define edataservermajor 26
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
-%define edataserveruimajor 2
+%define edataserveruimajor 3
 %define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
 
 %define ebackendmajor 10
@@ -44,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.38.4
+Version:	3.40.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
