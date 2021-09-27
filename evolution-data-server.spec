@@ -4,7 +4,7 @@
 %define edata_api 2.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 62
+%define camelmajor 63
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
 %define ebookmajor 20
