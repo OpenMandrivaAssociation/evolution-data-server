@@ -50,6 +50,8 @@ License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		http://www.gnome.org/projects/evolution/
+# Upstream patch
+Patch0:		https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/c802adfdc5e16f3fc210e8e83bb3b972cd8fdc86.patch
 BuildRequires:	bison
 BuildRequires:	cmake
 BuildRequires:	db-devel
@@ -214,7 +216,7 @@ Group:          System/Libraries
 GObject Introspection interface description for %name.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
