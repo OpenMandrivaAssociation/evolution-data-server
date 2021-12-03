@@ -44,14 +44,14 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.42.1
+Version:	3.42.2
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		http://www.gnome.org/projects/evolution/
 # Upstream patch
-Patch0:		https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/c802adfdc5e16f3fc210e8e83bb3b972cd8fdc86.patch
+#Patch0:		https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/c802adfdc5e16f3fc210e8e83bb3b972cd8fdc86.patch
 BuildRequires:	bison
 BuildRequires:	cmake
 BuildRequires:	db-devel
