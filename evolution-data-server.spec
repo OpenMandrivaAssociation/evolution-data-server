@@ -220,7 +220,8 @@ GObject Introspection interface description for %name.
 %build
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
-	-DLIB_INSTALL_DIR:PATH=%{_libdir} 
+	-DLIB_INSTALL_DIR:PATH=%{_libdir} \
+	-DWITH_GWEATHER4=ON
 %make_build
 
 %install
