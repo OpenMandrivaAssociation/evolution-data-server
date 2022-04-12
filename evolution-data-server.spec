@@ -44,8 +44,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.42.4
-Release:	2
+Version:	3.44.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -71,7 +71,7 @@ BuildRequires:	pkgconfig(libgdata) >= 0.10.0
 BuildRequires:	pkgconfig(goa-1.0) >= 3.1.1
 BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(nss)
-BuildRequires:	pkgconfig(gweather-3.0) >= 2.90.0
+BuildRequires:	pkgconfig(gweather4)
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(libical) >= 2.0
 BuildRequires:	pkgconfig(oauth) >= 0.9.4
