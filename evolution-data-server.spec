@@ -85,6 +85,8 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:	pkgconfig(webkit2gtk-4.0)
 BuildRequires:	pkgconfig(ss)
 
+BuildRequires: locales-extra-charsets
+
 %description
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
