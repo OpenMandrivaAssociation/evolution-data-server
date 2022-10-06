@@ -234,6 +234,13 @@ Requires:       %{name} >= %{version}-%{release}
 Evolution Data Server provides a central location for your addressbook
 and calendar in the gnome desktop.
 
+%package -n %{edataserverui4_girname}
+Summary:        GObject Introspection interface description for EDataServerUI4
+Group:          System/Libraries
+
+%description -n %{edataserverui4_girname}
+GObject Introspection interface description for EDataServerUI4.
+
 %prep
 %autosetup -p1
 
