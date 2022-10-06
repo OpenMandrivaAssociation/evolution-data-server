@@ -4,32 +4,32 @@
 %define edata_api 2.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 63
+%define camelmajor 64
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 20
+%define ebookmajor 21
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 1
+%define ecalmajor 2
 %define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
 
-%define edatabookmajor 26
+%define edatabookmajor 27
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 3
+%define ebook_contactsmajor 4
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 1
+%define edatacalmajor 2
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 26
+%define edataservermajor 27
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
-%define edataserveruimajor 3
+%define edataserveruimajor 4
 %define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
 
-%define ebackendmajor 10
+%define ebackendmajor 11
 %define ebackend_libname %mklibname ebackend %{api_version} %{ebackendmajor}
 
 %define gi_major 1.2
@@ -44,7 +44,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.44.4
+Version:	3.46.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -66,7 +66,7 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
 BuildRequires:	pkgconfig(libical-glib)
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
-BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
+BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
 BuildRequires:	pkgconfig(goa-1.0) >= 3.1.1
 BuildRequires:	pkgconfig(nspr)
@@ -82,7 +82,7 @@ BuildRequires:	pkgconfig(libsignon-glib)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
-BuildRequires:	pkgconfig(webkit2gtk-4.0)
+BuildRequires:	pkgconfig(webkit2gtk-4.1)
 BuildRequires:	pkgconfig(ss)
 
 BuildRequires: locales-extra-charsets
