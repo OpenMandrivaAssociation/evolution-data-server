@@ -2,38 +2,44 @@
 %define ui_api_version 3.0
 %define ecal_api 2.0
 %define edata_api 2.0
+%define edata4_api 1.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 63
+%define camelmajor 64
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
-%define ebookmajor 20
+%define ebookmajor 21
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 1
+%define ecalmajor 2
 %define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
 
-%define edatabookmajor 26
+%define edatabookmajor 27
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 3
+%define ebook_contactsmajor 4
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
-%define edatacalmajor 1
+%define edatacalmajor 2
 %define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
 
-%define edataservermajor 26
+%define edataservermajor 27
 %define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
-%define edataserveruimajor 3
+%define edataserveruimajor 4
 %define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
 
-%define ebackendmajor 10
+%define ebackendmajor 11
 %define ebackend_libname %mklibname ebackend %{api_version} %{ebackendmajor}
 
 %define gi_major 1.2
 %define girname %mklibname %{name}-gir %{gi_major}
+
+#----
+%define edataserverui4major 0
+%define edataserverui4_libname %mklibname edataserverui4_ %{edata4_api} %{edataserverui4major}
+%define edataserverui4_girname %mklibname edataserverui4-gir %{edata4_api}
 
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
@@ -44,7 +50,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.44.4
+Version:	3.46.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -66,7 +72,7 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
 BuildRequires:	pkgconfig(libical-glib)
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
-BuildRequires:	pkgconfig(libsoup-2.4) >= 2.31.2
+BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
 BuildRequires:	pkgconfig(goa-1.0) >= 3.1.1
 BuildRequires:	pkgconfig(nspr)
@@ -82,7 +88,8 @@ BuildRequires:	pkgconfig(libsignon-glib)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
-BuildRequires:	pkgconfig(webkit2gtk-4.0)
+BuildRequires:	pkgconfig(webkit2gtk-4.1)
+BuildRequires:	pkgconfig(webkit2gtk-5.0)
 BuildRequires:	pkgconfig(ss)
 
 BuildRequires: locales-extra-charsets
@@ -199,6 +206,8 @@ Requires: %edatacal_libname = %version
 Requires: %edataserver_libname = %version
 Requires: %edataserverui_libname = %version
 Requires: %ebackend_libname = %version
+Requires:       %{edataserverui_libname} = %{version}
+Requires:       %{edataserverui4_girname} = %{version}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	libedataserver-devel = %version-%release
@@ -215,6 +224,22 @@ Group:          System/Libraries
 
 %description -n %{girname}
 GObject Introspection interface description for %name.
+
+%package -n %{edataserverui4_libname}
+Summary:        Shared libraries for using Evolution Data Server
+Group:          System/Libraries
+Requires:       %{name} >= %{version}-%{release}
+
+%description -n %{edataserverui4_libname}
+Evolution Data Server provides a central location for your addressbook
+and calendar in the gnome desktop.
+
+%package -n %{edataserverui4_girname}
+Summary:        GObject Introspection interface description for EDataServerUI4
+Group:          System/Libraries
+
+%description -n %{edataserverui4_girname}
+GObject Introspection interface description for EDataServerUI4.
 
 %prep
 %autosetup -p1
@@ -302,6 +327,12 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %files -n %{ebackend_libname}
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
 
+%files -n %{edataserverui4_libname}
+%{_libdir}/libedataserverui4-%{edata4_api}.so.%{edataserverui4major}{,.*}
+ 
+%files -n %{edataserverui4_girname}
+%{_libdir}/girepository-1.0/EDataServerUI4-%{edata4_api}.typelib
+
 %files -n %{edataserver_libnamedev}
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
@@ -333,3 +364,5 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/vala/vapi/libedataserver-1.2.vapi
 %{_datadir}/vala/vapi/libedataserverui-1.2.deps
 %{_datadir}/vala/vapi/libedataserverui-1.2.vapi
+%{_datadir}/gir-1.0/EDataServerUI4-%{edata4_api}.gir
+%{_datadir}/vala/vapi/libedataserverui4-1.0.{deps,vapi}
