@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
 BuildRequires:	pkgconfig(webkit2gtk-4.1)
+BuildRequires:	pkgconfig(webkit2gtk-5.0)
 BuildRequires:	pkgconfig(ss)
 
 BuildRequires: locales-extra-charsets
