@@ -2,6 +2,7 @@
 %define ui_api_version 3.0
 %define ecal_api 2.0
 %define edata_api 2.0
+%define edata4_api 1.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
 %define camelmajor 64
@@ -34,6 +35,11 @@
 
 %define gi_major 1.2
 %define girname %mklibname %{name}-gir %{gi_major}
+
+#----
+%define edataserverui4major 0
+%define edataserverui4_libname %mklibname edataserverui4_ %{edata4_api} %{edataserverui4major}
+%define edataserverui4_girname %mklibname edataserverui4-gir %{edata4_api}
 
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
@@ -200,6 +206,8 @@ Requires: %edatacal_libname = %version
 Requires: %edataserver_libname = %version
 Requires: %edataserverui_libname = %version
 Requires: %ebackend_libname = %version
+Requires:       %{edataserverui_libname} = %{version}
+Requires:       %{edataserverui4_girname} = %{version}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	libedataserver-devel = %version-%release
@@ -216,6 +224,15 @@ Group:          System/Libraries
 
 %description -n %{girname}
 GObject Introspection interface description for %name.
+
+%package -n %{edataserverui4_libname}
+Summary:        Shared libraries for using Evolution Data Server
+Group:          System/Libraries
+Requires:       %{name} >= %{version}-%{release}
+
+%description -n %{edataserverui4_libname}
+Evolution Data Server provides a central location for your addressbook
+and calendar in the gnome desktop.
 
 %prep
 %autosetup -p1
@@ -303,6 +320,12 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %files -n %{ebackend_libname}
 %{_libdir}/libebackend-%{api_version}.so.%{ebackendmajor}*
 
+%files -n %{edataserverui4_libname}
+%{_libdir}/libedataserverui4-%{edata4_api}.so.%{edataserverui4major}{,.*}
+ 
+%files -n %{edataserverui4_girname}
+%{_libdir}/girepository-1.0/EDataServerUI4-%{edata4_api}.typelib
+
 %files -n %{edataserver_libnamedev}
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
@@ -334,3 +357,5 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/vala/vapi/libedataserver-1.2.vapi
 %{_datadir}/vala/vapi/libedataserverui-1.2.deps
 %{_datadir}/vala/vapi/libedataserverui-1.2.vapi
+%{_datadir}/gir-1.0/EDataServerUI4-%{edata4_api}.gir
+%{_datadir}/vala/vapi/libedataserverui4-1.0.{deps,vapi}
