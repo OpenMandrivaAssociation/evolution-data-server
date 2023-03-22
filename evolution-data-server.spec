@@ -51,7 +51,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.46.4
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
@@ -89,7 +89,7 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:	vala-tools
 BuildRequires:  gobject-introspection-devel
 BuildRequires:	pkgconfig(webkit2gtk-4.1)
-BuildRequires:	pkgconfig(webkit2gtk-5.0)
+#BuildRequires:	pkgconfig(webkit2gtk-5.0)
 BuildRequires:	pkgconfig(ss)
 
 BuildRequires: locales-extra-charsets
