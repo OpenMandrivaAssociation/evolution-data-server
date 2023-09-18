@@ -56,6 +56,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		https://www.gnome.org/projects/evolution/
+Patch0:		sqlite-fix.patch
 
 BuildRequires:	bison
 BuildRequires:	cmake
@@ -248,7 +249,6 @@ GObject Introspection interface description for EDataServerUI4.
 %cmake -DENABLE_VALA_BINDINGS=1 -DENABLE_INTROSPECTION=ON -DENABLE_UOA=OFF -DWITH_LIBDB=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
 	-DLIB_INSTALL_DIR:PATH=%{_libdir} \
- 	-DCAMEL_SQLITE_SHARED_CACHE=OFF \
 	-DWITH_GWEATHER4=ON
 %make_build
 
