@@ -1,0 +1,14 @@
+diff -uraN evolution-data-server-3.50.0/src/camel/camel-db.c omv-evolution-data-server-3.50.0/src/camel/camel-db.c
+--- evolution-data-server-3.50.0/src/camel/camel-db.c	2023-09-15 07:43:10.000000000 +0200
++++ omv-evolution-data-server-3.50.0/src/camel/camel-db.c	2023-09-18 17:01:29.011352134 +0200
+@@ -446,8 +446,8 @@
+ 
+ 	sqlite3_vfs_register (&vfs, 1);
+ 
+-	if (g_getenv ("CAMEL_SQLITE_SHARED_CACHE"))
+-		sqlite3_enable_shared_cache (TRUE);
++	//if (g_getenv ("CAMEL_SQLITE_SHARED_CACHE"))
++	//	sqlite3_enable_shared_cache (TRUE);
+ 
+ 	return NULL;
+ }
