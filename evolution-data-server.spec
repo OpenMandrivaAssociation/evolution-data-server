@@ -50,12 +50,13 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.48.4
+Version:	3.50.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
-URL:		http://www.gnome.org/projects/evolution/
+URL:		https://www.gnome.org/projects/evolution/
+Patch0:		sqlite-fix.patch
 
 BuildRequires:	bison
 BuildRequires:	cmake
@@ -65,7 +66,7 @@ BuildRequires:	gnome-common
 BuildRequires:	gperf
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
-BuildRequires:	openldap-devel
+BuildRequires:	pkgconfig(ldap)
 BuildRequires:	pkgconfig(krb5)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
