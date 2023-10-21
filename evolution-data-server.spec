@@ -50,7 +50,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.50.0
+Version:	3.50.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
