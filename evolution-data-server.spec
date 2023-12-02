@@ -279,7 +279,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_prefix}/lib/systemd/user
 %{_sysconfdir}/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 %{_datadir}/applications/org.gnome.Evolution-alarm-notify.desktop
-%{_datadir}/applications/org/org.gnome.evolution-data-server.OAuth2-handler.desktop
+%{_datadir}/applications/org.gnome.evolution-data-server.OAuth2-handler.desktop
 
 %attr(2755,root,mail) %{_libexecdir}/camel-lock-helper-%{api_version}
 %{_datadir}/%{name}
