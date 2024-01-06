@@ -56,7 +56,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
 URL:		https://www.gnome.org/projects/evolution/
-Patch0:		sqlite-fix.patch
+#Patch0:		sqlite-fix.patch
 
 BuildRequires:	bison
 BuildRequires:	cmake
