@@ -68,6 +68,7 @@ BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(ldap)
 BuildRequires:	pkgconfig(krb5)
+BuildRequires:	pkgconfig(harfbuzz-gobject)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
