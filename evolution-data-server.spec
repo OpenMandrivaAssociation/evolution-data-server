@@ -11,7 +11,7 @@
 %define ebookmajor 21
 %define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
 
-%define ecalmajor 2
+%define ecalmajor 3
 %define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
 
 %define edatabookmajor 27
