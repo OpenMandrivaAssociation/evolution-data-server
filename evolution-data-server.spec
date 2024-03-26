@@ -291,6 +291,7 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_datadir}/GConf/gsettings/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/pixmaps/%{name}
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Evolution-alarm-notify.svg
 
 %files -n %{camel_libname}
 %{_libdir}/libcamel-%{api_version}.so.%{camelmajor}*
