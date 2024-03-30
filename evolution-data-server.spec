@@ -51,7 +51,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.52.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
@@ -231,6 +231,7 @@ GObject Introspection interface description for %name.
 Summary:        Shared libraries for using Evolution Data Server
 Group:          System/Libraries
 Requires:       %{name} >= %{version}-%{release}
+Obsoletes:	%{_lib}edataserverui1.2_3
 
 %description -n %{edataserverui4_libname}
 Evolution Data Server provides a central location for your addressbook
