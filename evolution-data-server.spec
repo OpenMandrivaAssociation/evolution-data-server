@@ -73,7 +73,7 @@ BuildRequires:	pkgconfig(gio-2.0) >= 2.30
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:	pkgconfig(gmodule-2.0) >= 2.30
 BuildRequires:	pkgconfig(libical-glib)
-BuildRequires:	pkgconfig(libxml-2.0) >= 2.0.0
+BuildRequires:	pkgconfig(libxml-2.0) >= 2.15.2
 BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(libgdata) >= 0.10.0
 BuildRequires:	pkgconfig(goa-1.0) >= 3.1.1
