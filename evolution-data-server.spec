@@ -5,7 +5,7 @@
 %define edata4_api 1.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 66
+%define camelmajor 67
 %define camel_libname %mklibname camel %{api_version} %{camelmajor}
 
 %define ebookmajor 21
@@ -17,7 +17,7 @@
 %define edatabookmajor 27
 %define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
 
-%define ebook_contactsmajor 4
+%define ebook_contactsmajor 5
 %define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
 
 %define edatacalmajor 2
@@ -50,8 +50,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.58.2
-Release:	2
+Version:	3.60.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
@@ -276,7 +276,6 @@ find $RPM_BUILD_ROOT -name '*.so.*' -exec chmod +x {} \;
 %{_libexecdir}/evolution-calendar-factory-subprocess
 %{_libexecdir}/evolution-source-registry
 %{_libexecdir}/evolution-user-prompter
-%{_libexecdir}/evolution-scan-gconf-tree-xml
 %{_libexecdir}/evolution-data-server
 %{_prefix}/lib/systemd/user
 %{_sysconfdir}/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
