@@ -6,32 +6,41 @@
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
 %define camelmajor 67
-%define camel_libname %mklibname camel %{api_version} %{camelmajor}
+%define camel_libname %mklibname camel
+%define oldcamel_libname %mklibname camel 1.2 66
 
 %define ebookmajor 21
-%define ebook_libname %mklibname ebook %{api_version} %{ebookmajor}
+%define ebook_libname %mklibname ebook
+%define oldebook_libname %mklibname ebook 1.2 21
 
 %define ecalmajor 3
-%define ecal_libname %mklibname ecal %{ecal_api} %{ecalmajor}
+%define ecal_libname %mklibname ecal
+%define oldecal_libname %mklibname ecal 2.0 3
 
 %define edatabookmajor 27
-%define edatabook_libname %mklibname edata-book %{api_version} %{edatabookmajor}
+%define edatabook_libname %mklibname edata-book
+%define oldedatabook_libname %mklibname edata-book 1.2 27
 
 %define ebook_contactsmajor 5
-%define ebook_contacts_libname %mklibname ebook-contacts %{api_version} %{ebook_contactsmajor}
+%define ebook_contacts_libname %mklibname ebook-contacts
+%define oldebook_contacts_libname %mklibname ebook-contacts 1.2 4
 
 %define edatacalmajor 2
-%define edatacal_libname %mklibname edata-cal %{api_version} %{edatacalmajor}
+%define edatacal_libname %mklibname edata-cal
+%define edatacal_libname %mklibname edata-cal 1.2 2
 
 %define edataservermajor 27
-%define edataserver_libname %mklibname edataserver %{api_version} %{edataservermajor}
+%define edataserver_libname %mklibname edataserver
+%define oldedataserver_libname %mklibname edataserver 1.2 27
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
 
 %define edataserveruimajor 4
-%define edataserverui_libname %mklibname edataserverui %{api_version} %{edataserveruimajor}
+%define edataserverui_libname %mklibname edataserverui
+%define oldedataserverui_libname %mklibname edataserverui 1.2 4
 
 %define ebackendmajor 11
-%define ebackend_libname %mklibname ebackend %{api_version} %{ebackendmajor}
+%define ebackend_libname %mklibname ebackend
+%define oldebackend_libname %mklibname ebackend 1.2 11
 
 %define gi_major 1.2
 %define girname %mklibname %{name}-gir %{gi_major}
@@ -39,6 +48,7 @@
 #----
 %define edataserverui4major 0
 %define edataserverui4_libname %mklibname edataserverui4_ %{edata4_api} %{edataserverui4major}
+%define oldedataserverui4_libname %mklibname edataserverui4_ 1.0 0
 %define edataserverui4_girname %mklibname edataserverui4-gir %{edata4_api}
 
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
@@ -51,7 +61,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.60.1
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
@@ -106,6 +116,7 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname camel 38}
+%rename %{oldcamel_libname}
 
 %description -n %{camel_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -118,6 +129,7 @@ Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname ebook 14}
 Obsoletes:	lib64ebook1.2_20
+%rename %{oldebook_libname}
 
 %description -n %{ebook_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -129,6 +141,7 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname ecal 15}
+%rename %{oldecal_libname}
 
 %description -n %{ecal_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -138,6 +151,7 @@ and calendar in the gnome desktop.
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
+%rename %{oldebook_contacts_libname}
 
 %description -n %{ebook_contacts_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -149,6 +163,7 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edata-book 15}
+%rename %{oldedatabook_libname}
 
 %description -n %{edatabook_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -160,6 +175,7 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edata-cal 18}
+%rename	%{oldedatacal_libname}
 
 %description -n %{edatacal_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -172,6 +188,7 @@ Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edataserver 17}
 Requires:	gsettings-desktop-schemas
+%rename %{oldedataserver_libname}
 
 %description -n %{edataserver_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -181,6 +198,7 @@ and calendar in the gnome desktop.
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
+%rename %{oldedataserverui_libname}
 
 %description -n %{edataserverui_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -192,6 +210,7 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname ebackend 4}
+%rename %{oldebackend_libname}
 
 %description -n %{ebackend_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -233,6 +252,7 @@ Summary:        Shared libraries for using Evolution Data Server
 Group:          System/Libraries
 Requires:       %{name} >= %{version}-%{release}
 Obsoletes:	%{_lib}edataserverui1.2_3
+%rename %{oldedataserverui4_libname}
 
 %description -n %{edataserverui4_libname}
 Evolution Data Server provides a central location for your addressbook
