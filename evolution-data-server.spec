@@ -27,7 +27,7 @@
 
 %define edatacalmajor 2
 %define edatacal_libname %mklibname edata-cal
-%define edatacal_libname %mklibname edata-cal 1.2 2
+%define oldedatacal_libname %mklibname edata-cal 1.2 2
 
 %define edataservermajor 27
 %define edataserver_libname %mklibname edataserver
