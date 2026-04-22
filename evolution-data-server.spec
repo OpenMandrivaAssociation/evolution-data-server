@@ -61,7 +61,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.60.1
-Release:	3
+Release:	4
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
@@ -114,6 +114,7 @@ and calendar in the gnome desktop.
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
+Obsoletes: %{oldcamel_libname} < %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname camel 38}
 %rename %{oldcamel_libname}
@@ -151,6 +152,7 @@ and calendar in the gnome desktop.
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
+Obsoletes: %{ebook_contacts_libname} < %{version}-%{release}
 %rename %{oldebook_contacts_libname}
 
 %description -n %{ebook_contacts_libname}
