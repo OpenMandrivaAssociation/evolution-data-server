@@ -61,7 +61,7 @@
 Name:		evolution-data-server
 Summary:	Evolution Data Server
 Version:	3.60.1
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
@@ -115,6 +115,13 @@ Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 Obsoletes: %{oldcamel_libname} < %{version}-%{release}
+Obsoletes: %{_lib}camel1.2_62
+Obsoletes: %{_lib}camel1.2_63
+Obsoletes: %{_lib}camel1.2_64
+Obsoletes: %{_lib}camel1.2_65
+Obsoletes: %{_lib}camel1.2_66
+Obsoletes: %{_lib}camel1.2_67
+Obsoletes: %{_lib}camel < %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname camel 38}
 %rename %{oldcamel_libname}
@@ -142,6 +149,9 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname ecal 15}
+Obsoletes: %{_lib}ecal2.0_1
+Obsoletes: %{_lib}ecal2.0_2
+Obsoletes: %{_lib}ecal2.0_3
 %rename %{oldecal_libname}
 
 %description -n %{ecal_libname}
@@ -154,6 +164,12 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 Obsoletes: %{ebook_contacts_libname} < %{version}-%{release}
 %rename %{oldebook_contacts_libname}
+Obsoletes: %{_lib}ebook-contacts1.2_5
+Obsoletes: %{_lib}ebook-contacts1.2_4
+Obsoletes: %{_lib}ebook-contacts1.2_3
+Obsoletes: %{_lib}ebook-contacts1.2_2
+Obsoletes: %{_lib}ebook-contacts1.2_1
+Obsoletes: %{_lib}ebook-contacts1.2_0
 
 %description -n %{ebook_contacts_libname}
 Evolution Data Server provides a central location for your addressbook
@@ -165,6 +181,8 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edata-book 15}
+Obsoletes:	%{_lib}edata-book1.2_26
+Obsoletes:	%{_lib}edata-book1.2_27
 %rename %{oldedatabook_libname}
 
 %description -n %{edatabook_libname}
@@ -177,6 +195,8 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edata-cal 18}
+Obsoletes:	%{_lib}edata-cal1.2_1
+Obsoletes:	%{_lib}edata-cal1.2_2
 %rename	%{oldedatacal_libname}
 
 %description -n %{edatacal_libname}
@@ -189,6 +209,8 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname edataserver 17}
+Obsoletes:	%{_lib}edataserver1.2_26
+Obsoletes:	%{_lib}edataserver1.2_27
 Requires:	gsettings-desktop-schemas
 %rename %{oldedataserver_libname}
 
@@ -200,6 +222,7 @@ and calendar in the gnome desktop.
 Summary:	Shared libraries for using Evolution Data Server
 Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
+Obsoletes:	%{_lib}edataserverui1.2_4
 %rename %{oldedataserverui_libname}
 
 %description -n %{edataserverui_libname}
@@ -212,6 +235,8 @@ Group:		System/Libraries
 Requires:	%{name} >= %{version}-%{release}
 # (cg) Obsolete old non-conformant libname
 Obsoletes:	%{mklibname ebackend 4}
+Obsoletes:	%{_lib}ebackend1.2_10
+Obsoletes:	%{_lib}ebackend1.2_11
 %rename %{oldebackend_libname}
 
 %description -n %{ebackend_libname}
