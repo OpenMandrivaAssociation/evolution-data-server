@@ -5,7 +5,7 @@
 %define edata4_api 1.0
 %define dir_version %(echo %{version} | awk -F. '{print $1"."$2 + $2 % 2}')
 
-%define camelmajor 67
+%define camelmajor 68
 %define camel_libname %mklibname camel
 %define oldcamel_libname %mklibname camel 1.2 66
 
@@ -29,7 +29,7 @@
 %define edatacal_libname %mklibname edata-cal
 %define oldedatacal_libname %mklibname edata-cal 1.2 2
 
-%define edataservermajor 27
+%define edataservermajor 28
 %define edataserver_libname %mklibname edataserver
 %define oldedataserver_libname %mklibname edataserver 1.2 27
 %define edataserver_libnamedev %mklibname -d edataserver %{api_version}
@@ -60,7 +60,7 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.60.2
+Version:	3.62.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
