@@ -60,8 +60,8 @@
 
 Name:		evolution-data-server
 Summary:	Evolution Data Server
-Version:	3.62.0
-Release:	2
+Version:	3.62.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/evolution-data-server/%{url_ver}/%{name}-%{version}.tar.xz
